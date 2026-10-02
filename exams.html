@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Entrance Exams | EduPath AI</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f8f8ff;
+    color:#202040;
+}
+
+
+/* HEADER */
+
+.header{
+    height:70px;
+    background:white;
+    border-bottom:1px solid #e5e5ef;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 30px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-icon{
+    font-size:30px;
+}
+
+.logo h2{
+    color:#4d38d5;
+    font-size:20px;
+}
+
+.logo small{
+    color:#777;
+}
+
+.search{
+    width:400px;
+    height:42px;
+
+    border:1px solid #ddd;
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 12px;
+}
+
+.search input{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:8px;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.profile-icon{
+    width:38px;
+    height:38px;
+
+    background:#eeeaff;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#5037d5;
+    font-weight:bold;
+}
+
+
+/* LAYOUT */
+
+.layout{
+    display:grid;
+    grid-template-columns:210px 1fr 270px;
+    min-height:calc(100vh - 70px);
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+    background:white;
+    border-right:1px solid #eee;
+    padding:20px 12px;
+}
+
+.sidebar-title{
+    color:#5037d5;
+    font-size:20px;
+    font-weight:bold;
+
+    padding:10px;
+    margin-bottom:15px;
+}
+
+.sidebar a{
+    display:block;
+
+    text-decoration:none;
+    color:#333;
+
+    padding:12px;
+
+    margin:4px 0;
+
+    border-radius:9px;
+
+    font-size:13px;
+}
+
+.sidebar a:hover{
+    background:#f0edff;
+    color:#5037d5;
+}
+
+.sidebar a.active{
+    background:#eeeaff;
+    color:#5037d5;
+    font-weight:bold;
+}
+
+
+/* MAIN */
+
+.main{
+    padding:30px;
+    max-width:1000px;
+    width:100%;
+}
+
+.back{
+    text-decoration:none;
+    color:#5037d5;
+    font-size:13px;
+}
+
+.title{
+    margin-top:15px;
+}
+
+.title h1{
+    font-size:28px;
+}
+
+.title p{
+    margin-top:7px;
+    color:#777;
+    font-size:14px;
+}
+
+
+/* SEARCH */
+
+.exam-search{
+    margin-top:25px;
+
+    height:48px;
+
+    background:white;
+
+    border:1px solid #9b87ff;
+
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 15px;
+
+    gap:10px;
+}
+
+.exam-search input{
+    width:100%;
+    border:none;
+    outline:none;
+    font-size:14px;
+}
+
+
+/* FILTER */
+
+.filters{
+    display:flex;
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin:18px 0;
+}
+
+.filter{
+    border:1px solid #ddd;
+    background:white;
+
+    padding:9px 14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:12px;
+}
+
+.filter.active{
+    background:#5b3fe4;
+    color:white;
+    border-color:#5b3fe4;
+}
+
+
+/* EXAM GRID */
+
+.exam-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:15px;
+}
+
+
+/* EXAM CARD */
+
+.exam-card{
+    background:white;
+
+    border:1px solid #e5e5ef;
+
+    border-radius:13px;
+
+    padding:18px;
+
+    transition:.25s;
+}
+
+.exam-card:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+}
+
+.exam-top{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.exam-icon{
+    width:45px;
+    height:45px;
+
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+}
+
+.blue{
+    background:#e7f2ff;
+}
+
+.green{
+    background:#e5f8ef;
+}
+
+.pink{
+    background:#ffe9f2;
+}
+
+.orange{
+    background:#fff0e4;
+}
+
+.purple{
+    background:#eee9ff;
+}
+
+.yellow{
+    background:#fff7db;
+}
+
+.exam-card h3{
+    font-size:16px;
+}
+
+.exam-card small{
+    color:#777;
+    font-size:11px;
+}
+
+.exam-info{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin:15px 0;
+}
+
+.info{
+    background:#f8f8fc;
+
+    padding:9px;
+
+    border-radius:7px;
+
+    font-size:11px;
+}
+
+.info b{
+    display:block;
+
+    color:#333;
+
+    margin-top:3px;
+}
+
+.exam-description{
+    color:#666;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    margin-bottom:14px;
+}
+
+.buttons{
+    display:flex;
+    gap:8px;
+}
+
+.apply{
+    background:#5b3fe4;
+
+    color:white;
+
+    border:none;
+
+    padding:9px 13px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-size:11px;
+}
+
+.details{
+    background:#f0edff;
+
+    color:#5037d5;
+
+    border:none;
+
+    padding:9px 13px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-size:11px;
+}
+
+
+/* NO RESULT */
+
+.no-result{
+    display:none;
+
+    text-align:center;
+
+    padding:50px;
+
+    color:#777;
+}
+
+
+/* RIGHT */
+
+.right{
+    padding:20px 15px;
+}
+
+.box{
+    background:white;
+
+    border:1px solid #e5e5ef;
+
+    border-radius:13px;
+
+    padding:18px;
+}
+
+.box h2{
+    font-size:17px;
+    margin-bottom:12px;
+}
+
+.upcoming{
+    padding:12px 0;
+
+    border-bottom:1px solid #eee;
+}
+
+.upcoming:last-child{
+    border-bottom:none;
+}
+
+.upcoming b{
+    display:block;
+    font-size:12px;
+}
+
+.upcoming span{
+    color:#777;
+    font-size:10px;
+}
+
+.date{
+    color:#5037d5;
+    font-weight:bold;
+}
+
+
+/* AI */
+
+.ai{
+    margin-top:15px;
+
+    background:#eeeaff;
+
+    padding:20px;
+
+    border-radius:13px;
+}
+
+.ai h2{
+    color:#5037d5;
+
+    font-size:18px;
+}
+
+.ai p{
+    color:#555;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    margin:10px 0;
+}
+
+.ai button{
+    background:#5b3fe4;
+
+    border:none;
+
+    color:white;
+
+    padding:10px 13px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .layout{
+        grid-template-columns:
+        190px 1fr;
+    }
+
+    .right{
+        display:none;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .header{
+        padding:0 15px;
+    }
+
+    .logo{
+        display:none;
+    }
+
+    .search{
+        width:70%;
+    }
+
+    .layout{
+        display:block;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        padding:20px;
+    }
+
+    .exam-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        <div>
+            <h2>EduPath AI</h2>
+            <small>Career Guidance</small>
+        </div>
+
+    </div>
+
+
+    <div class="search">
+
+        🔍
+
+        <input
+        id="topSearch"
+        placeholder="Search exams..."
+        onkeyup="searchExam()">
+
+    </div>
+
+
+    <div class="profile">
+
+        🔔
+
+        <div class="profile-icon">
+            SK
+        </div>
+
+        <div>
+            <b>Sathya K</b>
+            <small>Student</small>
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<div class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        🎓 EduPath AI
+    </div>
+
+
+    <a href="dashboard.html">
+        🏠 Dashboard
+    </a>
+
+
+    <a href="what-to-study.html">
+        📚 What to Study
+    </a>
+
+
+    <a href="videos.html">
+        🎥 Career Videos
+    </a>
+
+
+    <a href="jobs.html">
+        💼 Job & Salary
+    </a>
+
+
+    <a href="higher-studies.html">
+        🎓 Higher Studies
+    </a>
+
+
+    <a href="colleges.html">
+        🏫 College Suggestions
+    </a>
+
+
+    <a href="scholarships.html">
+        🎁 Scholarships
+    </a>
+
+
+    <a href="eligibility.html">
+        ✅ Eligibility Checker
+    </a>
+
+
+    <a href="exams.html"
+       class="active">
+        📝 Entrance Exams
+    </a>
+
+
+    <a href="important-dates.html">
+        📅 Important Dates
+    </a>
+
+
+    <a href="saved.html">
+        ❤️ Saved
+    </a>
+
+
+    <a href="ai-assistant.html">
+        🤖 AI Assistant
+    </a>
+
+
+    <a href="profile.html">
+        👤 Profile
+    </a>
+
+
+</aside>
+
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <a href="dashboard.html"
+       class="back">
+        ← Back to Dashboard
+    </a>
+
+
+    <div class="title">
+
+        <h1>
+            Entrance Exams
+        </h1>
+
+        <p>
+            Find entrance exams for your
+            desired career and course
+        </p>
+
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="exam-search">
+
+        🔍
+
+        <input
+        id="examSearch"
+        placeholder="Search exam, course or career..."
+        onkeyup="searchExam()">
+
+    </div>
+
+
+
+    <!-- FILTER -->
+
+    <div class="filters">
+
+        <button
+        class="filter active"
+        onclick="filterExam('all',this)">
+            All
+        </button>
+
+        <button
+        class="filter"
+        onclick="filterExam('engineering',this)">
+            ⚙️ Engineering
+        </button>
+
+        <button
+        class="filter"
+        onclick="filterExam('medical',this)">
+            🩺 Medical
+        </button>
+
+        <button
+        class="filter"
+        onclick="filterExam('management',this)">
+            💼 Management
+        </button>
+
+        <button
+        class="filter"
+        onclick="filterExam('law',this)">
+            ⚖️ Law
+        </button>
+
+        <button
+        class="filter"
+        onclick="filterExam('government',this)">
+            🏛️ Government
+        </button>
+
+        <button
+        class="filter"
+        onclick="filterExam('design',this)">
+            🎨 Design
+        </button>
+
+        <button
+        class="filter"
+        onclick="filterExam('defence',this)">
+            🪖 Defence
+        </button>
+
+        <button
+        class="filter"
+        onclick="filterExam('abroad',this)">
+            🌍 Abroad
+        </button>
+
+    </div>
+
+
+
+    <!-- EXAMS -->
+
+    <div
+    class="exam-grid"
+    id="examGrid">
+
+
+
+<!-- JEE MAIN -->
+
+<div class="exam-card"
+data-category="engineering"
+data-name="jee main engineering btech">
+
+<div class="exam-top">
+
+<div class="exam-icon blue">
+⚙️
+</div>
+
+<div>
+
+<h3>JEE Main</h3>
+
+<small>Engineering Entrance</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Exam
+<b>JEE Main</b>
+</div>
+
+<div class="info">
+Course
+<b>B.E / B.Tech</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Conducted by
+<b>NTA</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Entrance exam for admission to NITs,
+IIITs and other engineering institutes.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('JEE Main')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('JEE Main')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- JEE ADVANCED -->
+
+<div class="exam-card"
+data-category="engineering"
+data-name="jee advanced iit engineering">
+
+<div class="exam-top">
+
+<div class="exam-icon purple">
+🎓
+</div>
+
+<div>
+
+<h3>JEE Advanced</h3>
+
+<small>IIT Entrance</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Course
+<b>B.Tech</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+For
+<b>IITs</b>
+</div>
+
+<div class="info">
+Mode
+<b>Online</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Entrance examination for admission
+to IIT undergraduate programs.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('JEE Advanced')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('JEE Advanced')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- BITSAT -->
+
+<div class="exam-card"
+data-category="engineering"
+data-name="bitsat bits pilani engineering">
+
+<div class="exam-top">
+
+<div class="exam-icon green">
+💻
+</div>
+
+<div>
+
+<h3>BITSAT</h3>
+
+<small>BITS Admission Test</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Course
+<b>B.E</b>
+</div>
+
+<div class="info">
+Institute
+<b>BITS</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Mode
+<b>Online</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Entrance exam for undergraduate
+programs at BITS campuses.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('BITSAT')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('BITSAT')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- VITEEE -->
+
+<div class="exam-card"
+data-category="engineering"
+data-name="viteee vit engineering">
+
+<div class="exam-top">
+
+<div class="exam-icon orange">
+🏫
+</div>
+
+<div>
+
+<h3>VITEEE</h3>
+
+<small>VIT Engineering Entrance</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Course
+<b>B.Tech</b>
+</div>
+
+<div class="info">
+Institute
+<b>VIT</b>
+</div>
+
+<div class="info">
+Level
+<b>University</b>
+</div>
+
+<div class="info">
+Mode
+<b>Online</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Entrance examination for VIT
+engineering programs.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('VITEEE')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('VITEEE')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- NEET -->
+
+<div class="exam-card"
+data-category="medical"
+data-name="neet medical mbbs medicine">
+
+<div class="exam-top">
+
+<div class="exam-icon pink">
+🩺
+</div>
+
+<div>
+
+<h3>NEET UG</h3>
+
+<small>Medical Entrance</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Course
+<b>MBBS / BDS</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Conducted by
+<b>NTA</b>
+</div>
+
+<div class="info">
+Mode
+<b>Offline</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Main entrance examination for
+undergraduate medical admissions in India.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('NEET UG')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('NEET UG')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- CAT -->
+
+<div class="exam-card"
+data-category="management"
+data-name="cat mba management iim">
+
+<div class="exam-top">
+
+<div class="exam-icon orange">
+📊
+</div>
+
+<div>
+
+<h3>CAT</h3>
+
+<small>Management Entrance</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Course
+<b>MBA / PGDM</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+For
+<b>IIMs</b>
+</div>
+
+<div class="info">
+Mode
+<b>Online</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Entrance exam for admission to
+IIMs and many management institutes.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('CAT')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('CAT')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- XAT -->
+
+<div class="exam-card"
+data-category="management"
+data-name="xat mba management">
+
+<div class="exam-top">
+
+<div class="exam-icon purple">
+💼
+</div>
+
+<div>
+
+<h3>XAT</h3>
+
+<small>Management Entrance</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Course
+<b>MBA</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Conducted by
+<b>XLRI</b>
+</div>
+
+<div class="info">
+Mode
+<b>Online</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Management entrance exam accepted
+by many business schools.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('XAT')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('XAT')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- CLAT -->
+
+<div class="exam-card"
+data-category="law"
+data-name="clat law llb legal">
+
+<div class="exam-top">
+
+<div class="exam-icon blue">
+⚖️
+</div>
+
+<div>
+
+<h3>CLAT</h3>
+
+<small>Law Entrance</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Course
+<b>LLB</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Field
+<b>Law</b>
+</div>
+
+<div class="info">
+Mode
+<b>Online</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Common entrance examination for
+participating National Law Universities.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('CLAT')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('CLAT')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- UPSC -->
+
+<div class="exam-card"
+data-category="government"
+data-name="upsc civil services ias government">
+
+<div class="exam-top">
+
+<div class="exam-icon green">
+🏛️
+</div>
+
+<div>
+
+<h3>UPSC Civil Services</h3>
+
+<small>Government Examination</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Posts
+<b>IAS / IPS / IFS</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Exam
+<b>Prelims + Mains</b>
+</div>
+
+<div class="info">
+Interview
+<b>Yes</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+National competitive examination for
+various central civil services.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('UPSC Civil Services')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('UPSC Civil Services')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- SSC -->
+
+<div class="exam-card"
+data-category="government"
+data-name="ssc cgl government jobs">
+
+<div class="exam-top">
+
+<div class="exam-icon yellow">
+📋
+</div>
+
+<div>
+
+<h3>SSC CGL</h3>
+
+<small>Government Jobs</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Qualification
+<b>Graduation</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Field
+<b>Government</b>
+</div>
+
+<div class="info">
+Mode
+<b>Online</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Graduate-level recruitment examination
+for various central government posts.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('SSC CGL')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('SSC CGL')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- NIFT -->
+
+<div class="exam-card"
+data-category="design"
+data-name="nift fashion design">
+
+<div class="exam-top">
+
+<div class="exam-icon pink">
+🎨
+</div>
+
+<div>
+
+<h3>NIFT Entrance</h3>
+
+<small>Fashion & Design</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Course
+<b>Design</b>
+</div>
+
+<div class="info">
+Institute
+<b>NIFT</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Field
+<b>Fashion</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Entrance examination for fashion,
+design and related programs.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('NIFT')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('NIFT')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- NDA -->
+
+<div class="exam-card"
+data-category="defence"
+data-name="nda defence army navy airforce">
+
+<div class="exam-top">
+
+<div class="exam-icon green">
+🪖
+</div>
+
+<div>
+
+<h3>NDA</h3>
+
+<small>Defence Entrance</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Career
+<b>Defence</b>
+</div>
+
+<div class="info">
+Services
+<b>Army / Navy / Air Force</b>
+</div>
+
+<div class="info">
+Level
+<b>National</b>
+</div>
+
+<div class="info">
+Conducted by
+<b>UPSC</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+Entrance examination for admission
+to the National Defence Academy.
+</p>
+
+<div class="buttons">
+
+<button class="apply"
+onclick="applyExam('NDA')">
+Apply →
+</button>
+
+<button class="details"
+onclick="examDetails('NDA')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- IELTS -->
+
+<div class="exam-card"
+data-category="abroad"
+data-name="ielts abroad english study overseas">
+
+<div class="exam-top">
+
+<div class="exam-icon blue">
+🌍
+</div>
+
+<div>
+
+<h3>IELTS</h3>
+
+<small>Study Abroad</small>
+
+</div>
+
+</div>
+
+<div class="exam-info">
+
+<div class="info">
+Purpose
+<b>English Test</b>
+</div>
+
+<div class="info">
+Used for
+<b>Study Abroad</b>
+</div>
+
+<div class="info">
+Skills
+<b>4 Skills</b>
+</div>
+
+<div class="info">
+Type
+<b>Language Test</b>
+</div>
+
+</div>
+
+<p class="exam-description">
+English language proficiency test
+used by universities and institutions worldwide.
+</p>
+
+<div class="buttons">
+
+<button class="details"
+onclick="examDetails('IELTS')">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+    </div>
+
+
+
+    <div
+    id="noResult"
+    class="no-result">
+
+        <h2>
+            😔 No Exams Found
+        </h2>
+
+        <p>
+            Try searching another exam or category.
+        </p>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- RIGHT SIDEBAR -->
+
+<aside class="right">
+
+
+<div class="box">
+
+<h2>
+🔥 Popular Exams
+</h2>
+
+
+<div class="upcoming">
+
+<b>JEE Main</b>
+
+<span>
+Engineering
+</span>
+
+</div>
+
+
+<div class="upcoming">
+
+<b>NEET UG</b>
+
+<span>
+Medical
+</span>
+
+</div>
+
+
+<div class="upcoming">
+
+<b>CAT</b>
+
+<span>
+Management
+</span>
+
+</div>
+
+
+<div class="upcoming">
+
+<b>CLAT</b>
+
+<span>
+Law
+</span>
+
+</div>
+
+
+<div class="upcoming">
+
+<b>UPSC CSE</b>
+
+<span>
+Government
+</span>
+
+</div>
+
+
+<div class="upcoming">
+
+<b>NDA</b>
+
+<span>
+Defence
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="ai">
+
+<h2>
+Not sure which exam?
+</h2>
+
+<p>
+Tell our AI Assistant your
+course or career goal and get
+the right entrance exam
+recommendation.
+</p>
+
+<button onclick="goAI()">
+🤖 Ask AI Assistant
+</button>
+
+</div>
+
+
+</aside>
+
+
+</div>
+
+
+
+<script>
+
+
+/* SEARCH */
+
+function searchExam(){
+
+    const value =
+    document.getElementById(
+        "examSearch"
+    ).value
+    .toLowerCase()
+    .trim();
+
+
+    document.getElementById(
+        "topSearch"
+    ).value = value;
+
+
+    const cards =
+    document.querySelectorAll(
+        ".exam-card"
+    );
+
+
+    let found = 0;
+
+
+    cards.forEach(card => {
+
+        const name =
+        card.dataset.name
+        .toLowerCase();
+
+
+        if(
+            name.includes(value)
+            ||
+            value === ""
+        ){
+
+            card.style.display =
+            "block";
+
+            found++;
+
+        }
+        else{
+
+            card.style.display =
+            "none";
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "noResult"
+    ).style.display =
+    found === 0
+    ? "block"
+    : "none";
+
+}
+
+
+
+/* FILTER */
+
+function filterExam(
+    category,
+    button
+){
+
+    document
+    .querySelectorAll(".filter")
+    .forEach(btn => {
+
+        btn.classList.remove(
+            "active"
+        );
+
+    });
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    const cards =
+    document.querySelectorAll(
+        ".exam-card"
+    );
+
+
+    let found = 0;
+
+
+    cards.forEach(card => {
+
+        if(
+            category === "all"
+            ||
+            card.dataset.category === category
+        ){
+
+            card.style.display =
+            "block";
+
+            found++;
+
+        }
+        else{
+
+            card.style.display =
+            "none";
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "examSearch"
+    ).value = "";
+
+
+    document.getElementById(
+        "topSearch"
+    ).value = "";
+
+
+    document.getElementById(
+        "noResult"
+    ).style.display =
+    found === 0
+    ? "block"
+    : "none";
+
+}
+
+
+
+/* APPLY */
+
+function applyExam(exam){
+
+    localStorage.setItem(
+        "selectedExam",
+        exam
+    );
+
+
+    alert(
+        exam +
+        " application page will open."
+    );
+
+}
+
+
+
+/* DETAILS */
+
+function examDetails(exam){
+
+    localStorage.setItem(
+        "selectedExam",
+        exam
+    );
+
+    window.location.href =
+        "exam-details.html";
+
+}
+
+
+
+/* AI */
+
+function goAI(){
+
+    window.location.href =
+    "ai-assistant.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

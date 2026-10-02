@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Important Dates - EduPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="dashboard.html">🏠 Home</a>
+
+    <a href="what-to-study.html">📚 Study</a>
+
+    <a href="jobs.html">💼 Jobs</a>
+
+    <a href="videos.html">🎥 Videos</a>
+
+    <a href="higher-studies.html">🎓 Higher Studies</a>
+
+    <a href="colleges.html">🏫 Colleges</a>
+
+    <a href="scholarships.html">💰 Scholarships</a>
+
+    <a href="eligibility.html">✅ Eligibility</a>
+
+    <a href="exams.html">📝 Exams</a>
+
+    <a href="ai-assistant.html">🤖 AI</a>
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="dates-container">
+
+        <h2>← Important Dates</h2>
+
+        <p>
+            Keep track of important exam,
+            admission and scholarship dates.
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <input
+            class="search"
+            id="dateSearch"
+            type="text"
+            placeholder="🔍 Search exam or event..."
+            oninput="searchDates()"
+        >
+
+
+        <!-- FILTER -->
+
+        <div class="categories">
+
+            <button
+                class="category active"
+                onclick="filterDates('all', this)">
+                All
+            </button>
+
+            <button
+                class="category"
+                onclick="filterDates('exam', this)">
+                Exams
+            </button>
+
+            <button
+                class="category"
+                onclick="filterDates('admission', this)">
+                Admission
+            </button>
+
+            <button
+                class="category"
+                onclick="filterDates('scholarship', this)">
+                Scholarships
+            </button>
+
+        </div>
+
+
+
+        <!-- ================= DATE LIST ================= -->
+
+        <div
+            class="date-list"
+            id="dateList"
+        >
+
+
+            <!-- JEE -->
+
+            <div
+                class="date-card"
+                data-category="exam"
+                data-name="jee main exam">
+
+                <div class="date-box">
+
+                    <span>
+                        EXAM
+                    </span>
+
+                    <strong>
+                        JEE
+                    </strong>
+
+                </div>
+
+
+                <div class="date-info">
+
+                    <h3>
+                        JEE Main
+                    </h3>
+
+                    <p>
+                        📅 Check official notification
+                    </p>
+
+                    <span class="date-tag exam-tag">
+                        Entrance Exam
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="reminder-btn"
+                    onclick="setReminder('JEE Main')">
+
+                    🔔 Reminder
+
+                </button>
+
+            </div>
+
+
+
+            <!-- NEET -->
+
+            <div
+                class="date-card"
+                data-category="exam"
+                data-name="neet exam medical">
+
+                <div class="date-box">
+
+                    <span>
+                        EXAM
+                    </span>
+
+                    <strong>
+                        NEET
+                    </strong>
+
+                </div>
+
+
+                <div class="date-info">
+
+                    <h3>
+                        NEET UG
+                    </h3>
+
+                    <p>
+                        📅 Check official notification
+                    </p>
+
+                    <span class="date-tag exam-tag">
+                        Medical Entrance
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="reminder-btn"
+                    onclick="setReminder('NEET UG')">
+
+                    🔔 Reminder
+
+                </button>
+
+            </div>
+
+
+
+            <!-- COLLEGE ADMISSION -->
+
+            <div
+                class="date-card"
+                data-category="admission"
+                data-name="college admission">
+
+                <div class="date-box">
+
+                    <span>
+                        ADMISSION
+                    </span>
+
+                    <strong>
+                        🎓
+                    </strong>
+
+                </div>
+
+
+                <div class="date-info">
+
+                    <h3>
+                        College Admissions
+                    </h3>
+
+                    <p>
+                        📅 Dates vary by institution
+                    </p>
+
+                    <span class="date-tag admission-tag">
+                        Admission
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="reminder-btn"
+                    onclick="setReminder('College Admissions')">
+
+                    🔔 Reminder
+
+                </button>
+
+            </div>
+
+
+
+            <!-- SCHOLARSHIP -->
+
+            <div
+                class="date-card"
+                data-category="scholarship"
+                data-name="scholarship application">
+
+                <div class="date-box">
+
+                    <span>
+                        SCHOLARSHIP
+                    </span>
+
+                    <strong>
+                        💰
+                    </strong>
+
+                </div>
+
+
+                <div class="date-info">
+
+                    <h3>
+                        Scholarship Applications
+                    </h3>
+
+                    <p>
+                        📅 Check each scheme's official deadline
+                    </p>
+
+                    <span class="date-tag scholarship-tag">
+                        Financial Aid
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="reminder-btn"
+                    onclick="setReminder('Scholarship Applications')">
+
+                    🔔 Reminder
+
+                </button>
+
+            </div>
+
+
+
+            <!-- GATE -->
+
+            <div
+                class="date-card"
+                data-category="exam"
+                data-name="gate exam">
+
+                <div class="date-box">
+
+                    <span>
+                        EXAM
+                    </span>
+
+                    <strong>
+                        GATE
+                    </strong>
+
+                </div>
+
+
+                <div class="date-info">
+
+                    <h3>
+                        GATE
+                    </h3>
+
+                    <p>
+                        📅 Check official notification
+                    </p>
+
+                    <span class="date-tag exam-tag">
+                        Higher Studies
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="reminder-btn"
+                    onclick="setReminder('GATE')">
+
+                    🔔 Reminder
+
+                </button>
+
+            </div>
+
+
+
+            <!-- CAT -->
+
+            <div
+                class="date-card"
+                data-category="exam"
+                data-name="cat exam mba">
+
+                <div class="date-box">
+
+                    <span>
+                        EXAM
+                    </span>
+
+                    <strong>
+                        CAT
+                    </strong>
+
+                </div>
+
+
+                <div class="date-info">
+
+                    <h3>
+                        CAT
+                    </h3>
+
+                    <p>
+                        📅 Check official notification
+                    </p>
+
+                    <span class="date-tag exam-tag">
+                        Management
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="reminder-btn"
+                    onclick="setReminder('CAT')">
+
+                    🔔 Reminder
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================
+   FILTER DATES
+========================= */
+
+function filterDates(category, button) {
+
+    let cards =
+        document.querySelectorAll(".date-card");
+
+    let buttons =
+        document.querySelectorAll(".category");
+
+
+    buttons.forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    cards.forEach(function(card) {
+
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
+
+            card.style.display = "flex";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchDates() {
+
+    let search =
+        document
+        .getElementById("dateSearch")
+        .value
+        .toLowerCase();
+
+
+    let cards =
+        document.querySelectorAll(".date-card");
+
+
+    cards.forEach(function(card) {
+
+        let name =
+            card.dataset.name;
+
+
+        if (name.includes(search)) {
+
+            card.style.display = "flex";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================
+   REMINDER
+========================= */
+
+function setReminder(eventName) {
+
+    let reminders =
+        JSON.parse(
+            localStorage.getItem("reminders")
+        ) || [];
+
+
+    if (!reminders.includes(eventName)) {
+
+        reminders.push(eventName);
+
+
+        localStorage.setItem(
+            "reminders",
+            JSON.stringify(reminders)
+        );
+
+
+        alert(
+            "🔔 Reminder set for " +
+            eventName
+        );
+
+    }
+
+    else {
+
+        alert(
+            "Reminder already set for " +
+            eventName
+        );
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>

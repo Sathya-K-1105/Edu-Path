@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Saved Items - EduPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="dashboard.html">🏠 Home</a>
+
+    <a href="what-to-study.html">📚 Study</a>
+
+    <a href="jobs.html">💼 Jobs</a>
+
+    <a href="videos.html">🎥 Videos</a>
+
+    <a href="higher-studies.html">🎓 Higher Studies</a>
+
+    <a href="colleges.html">🏫 Colleges</a>
+
+    <a href="scholarships.html">💰 Scholarships</a>
+
+    <a href="eligibility.html">✅ Eligibility</a>
+
+    <a href="exams.html">📝 Exams</a>
+
+    <a href="ai-assistant.html">🤖 AI</a>
+
+    <a href="important-dates.html">📅 Dates</a>
+
+    <a href="saved.html">❤️ Saved</a>
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="saved-container">
+
+        <h2>❤️ Saved Items</h2>
+
+        <p>
+            Your saved scholarships, exams and reminders
+            are displayed here.
+        </p>
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <div class="saved-summary">
+
+            <div class="summary-card">
+
+                <span>💰</span>
+
+                <b id="scholarshipCount">
+                    0
+                </b>
+
+                <small>
+                    Scholarships
+                </small>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>📝</span>
+
+                <b id="examCount">
+                    0
+                </b>
+
+                <small>
+                    Exams
+                </small>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>🔔</span>
+
+                <b id="reminderCount">
+                    0
+                </b>
+
+                <small>
+                    Reminders
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= SCHOLARSHIPS ================= -->
+
+        <section>
+
+            <h3>
+                💰 Saved Scholarships
+            </h3>
+
+            <div
+                id="savedScholarships"
+                class="saved-list">
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= EXAMS ================= -->
+
+        <section>
+
+            <h3>
+                📝 Saved Exams
+            </h3>
+
+            <div
+                id="savedExams"
+                class="saved-list">
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= REMINDERS ================= -->
+
+        <section>
+
+            <h3>
+                🔔 My Reminders
+            </h3>
+
+            <div
+                id="savedReminders"
+                class="saved-list">
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================
+   GET SAVED DATA
+========================= */
+
+let scholarships =
+    JSON.parse(
+        localStorage.getItem(
+            "savedScholarships"
+        )
+    ) || [];
+
+
+let exams =
+    JSON.parse(
+        localStorage.getItem(
+            "savedExams"
+        )
+    ) || [];
+
+
+let reminders =
+    JSON.parse(
+        localStorage.getItem(
+            "reminders"
+        )
+    ) || [];
+
+
+
+/* =========================
+   COUNTS
+========================= */
+
+document.getElementById(
+    "scholarshipCount"
+).textContent =
+    scholarships.length;
+
+
+document.getElementById(
+    "examCount"
+).textContent =
+    exams.length;
+
+
+document.getElementById(
+    "reminderCount"
+).textContent =
+    reminders.length;
+
+
+
+/* =========================
+   SHOW SCHOLARSHIPS
+========================= */
+
+function displayScholarships() {
+
+    let container =
+        document.getElementById(
+            "savedScholarships"
+        );
+
+
+    if (scholarships.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                💔
+
+                <p>
+                    No scholarships saved yet.
+                </p>
+
+                <a href="scholarships.html">
+                    Explore Scholarships →
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    scholarships.forEach(
+        function(item, index) {
+
+            container.innerHTML += `
+
+                <div class="saved-item">
+
+                    <div>
+
+                        <span class="saved-icon">
+                            💰
+                        </span>
+
+                        <b>
+                            ${item}
+                        </b>
+
+                    </div>
+
+
+                    <button
+                        onclick="removeScholarship(${index})">
+
+                        🗑️
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
+/* =========================
+   SHOW EXAMS
+========================= */
+
+function displayExams() {
+
+    let container =
+        document.getElementById(
+            "savedExams"
+        );
+
+
+    if (exams.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                📝
+
+                <p>
+                    No exams saved yet.
+                </p>
+
+                <a href="exams.html">
+                    Explore Exams →
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    exams.forEach(
+        function(item, index) {
+
+            container.innerHTML += `
+
+                <div class="saved-item">
+
+                    <div>
+
+                        <span class="saved-icon">
+                            📝
+                        </span>
+
+                        <b>
+                            ${item}
+                        </b>
+
+                    </div>
+
+
+                    <button
+                        onclick="removeExam(${index})">
+
+                        🗑️
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
+/* =========================
+   SHOW REMINDERS
+========================= */
+
+function displayReminders() {
+
+    let container =
+        document.getElementById(
+            "savedReminders"
+        );
+
+
+    if (reminders.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                🔔
+
+                <p>
+                    No reminders set yet.
+                </p>
+
+                <a href="important-dates.html">
+                    View Important Dates →
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    reminders.forEach(
+        function(item, index) {
+
+            container.innerHTML += `
+
+                <div class="saved-item">
+
+                    <div>
+
+                        <span class="saved-icon">
+                            🔔
+                        </span>
+
+                        <b>
+                            ${item}
+                        </b>
+
+                    </div>
+
+
+                    <button
+                        onclick="removeReminder(${index})">
+
+                        🗑️
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
+/* =========================
+   REMOVE SCHOLARSHIP
+========================= */
+
+function removeScholarship(index) {
+
+    scholarships.splice(index, 1);
+
+
+    localStorage.setItem(
+        "savedScholarships",
+        JSON.stringify(scholarships)
+    );
+
+
+    location.reload();
+
+}
+
+
+
+/* =========================
+   REMOVE EXAM
+========================= */
+
+function removeExam(index) {
+
+    exams.splice(index, 1);
+
+
+    localStorage.setItem(
+        "savedExams",
+        JSON.stringify(exams)
+    );
+
+
+    location.reload();
+
+}
+
+
+
+/* =========================
+   REMOVE REMINDER
+========================= */
+
+function removeReminder(index) {
+
+    reminders.splice(index, 1);
+
+
+    localStorage.setItem(
+        "reminders",
+        JSON.stringify(reminders)
+    );
+
+
+    location.reload();
+
+}
+
+
+
+/* =========================
+   DISPLAY
+========================= */
+
+displayScholarships();
+
+displayExams();
+
+displayReminders();
+
+</script>
+
+
+</body>
+
+</html>

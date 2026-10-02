@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Profile - EduPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="dashboard.html">🏠 Home</a>
+
+    <a href="what-to-study.html">📚 Study</a>
+
+    <a href="jobs.html">💼 Jobs</a>
+
+    <a href="videos.html">🎥 Videos</a>
+
+    <a href="higher-studies.html">🎓 Higher Studies</a>
+
+    <a href="colleges.html">🏫 Colleges</a>
+
+    <a href="scholarships.html">💰 Scholarships</a>
+
+    <a href="eligibility.html">✅ Eligibility</a>
+
+    <a href="exams.html">📝 Exams</a>
+
+    <a href="ai-assistant.html">🤖 AI</a>
+
+    <a href="important-dates.html">📅 Dates</a>
+
+    <a href="saved.html">❤️ Saved</a>
+
+    <a href="profile.html">👤 Profile</a>
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="profile-container">
+
+
+        <!-- ================= PROFILE HEADER ================= -->
+
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+
+                👤
+
+            </div>
+
+
+            <div>
+
+                <h2 id="profileName">
+                    Student
+                </h2>
+
+                <p>
+                    EduPath AI Student
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= PROFILE FORM ================= -->
+
+        <div class="profile-card">
+
+            <h3>
+                👤 Personal Information
+            </h3>
+
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+
+            <label>
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter phone number"
+            >
+
+
+            <label>
+                Location
+            </label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Enter your city"
+            >
+
+        </div>
+
+
+
+        <!-- ================= EDUCATION ================= -->
+
+        <div class="profile-card">
+
+            <h3>
+                🎓 Education
+            </h3>
+
+
+            <label>
+                Current Education
+            </label>
+
+            <select id="education">
+
+                <option value="">
+                    Select Education
+                </option>
+
+                <option value="school">
+                    School
+                </option>
+
+                <option value="12th">
+                    12th Standard
+                </option>
+
+                <option value="ug">
+                    Undergraduate
+                </option>
+
+                <option value="pg">
+                    Postgraduate
+                </option>
+
+            </select>
+
+
+            <label>
+                Stream / Branch
+            </label>
+
+            <input
+                type="text"
+                id="branch"
+                placeholder="Example: Computer Science"
+            >
+
+
+            <label>
+                Percentage / CGPA
+            </label>
+
+            <input
+                type="text"
+                id="marks"
+                placeholder="Example: 85% / 9.2 CGPA"
+            >
+
+        </div>
+
+
+
+        <!-- ================= SKILLS ================= -->
+
+        <div class="profile-card">
+
+            <h3>
+                💻 Skills & Interests
+            </h3>
+
+
+            <label>
+                Your Skills
+            </label>
+
+            <input
+                type="text"
+                id="skills"
+                placeholder="Example: Java, Python, HTML"
+            >
+
+
+            <label>
+                Career Goal
+            </label>
+
+            <select id="career">
+
+                <option value="">
+                    Select Career Goal
+                </option>
+
+                <option value="software">
+                    Software Developer
+                </option>
+
+                <option value="data">
+                    Data Scientist
+                </option>
+
+                <option value="ai">
+                    AI / ML Engineer
+                </option>
+
+                <option value="designer">
+                    UI/UX Designer
+                </option>
+
+                <option value="business">
+                    Business / Management
+                </option>
+
+                <option value="research">
+                    Research
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- ================= SAVE ================= -->
+
+        <button
+            class="save-profile-btn"
+            onclick="saveProfile()">
+
+            💾 Save Profile
+
+        </button>
+
+
+
+        <!-- ================= SAVED SUMMARY ================= -->
+
+        <div class="profile-card">
+
+            <h3>
+                📊 My Activity
+            </h3>
+
+
+            <div class="profile-stats">
+
+
+                <div>
+
+                    <b id="scholarshipCount">
+                        0
+                    </b>
+
+                    <span>
+                        Scholarships
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <b id="examCount">
+                        0
+                    </b>
+
+                    <span>
+                        Exams
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <b id="reminderCount">
+                        0
+                    </b>
+
+                    <span>
+                        Reminders
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= LOGOUT ================= -->
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            🚪 Logout
+
+        </button>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================
+   LOAD PROFILE
+========================= */
+
+function loadProfile() {
+
+
+    let profile =
+        JSON.parse(
+            localStorage.getItem("studentProfile")
+        );
+
+
+    if (!profile) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "name"
+    ).value =
+        profile.name || "";
+
+
+    document.getElementById(
+        "email"
+    ).value =
+        profile.email || "";
+
+
+    document.getElementById(
+        "phone"
+    ).value =
+        profile.phone || "";
+
+
+    document.getElementById(
+        "location"
+    ).value =
+        profile.location || "";
+
+
+    document.getElementById(
+        "education"
+    ).value =
+        profile.education || "";
+
+
+    document.getElementById(
+        "branch"
+    ).value =
+        profile.branch || "";
+
+
+    document.getElementById(
+        "marks"
+    ).value =
+        profile.marks || "";
+
+
+    document.getElementById(
+        "skills"
+    ).value =
+        profile.skills || "";
+
+
+    document.getElementById(
+        "career"
+    ).value =
+        profile.career || "";
+
+
+    updateProfileName();
+
+}
+
+
+
+/* =========================
+   SAVE PROFILE
+========================= */
+
+function saveProfile() {
+
+
+    let profile = {
+
+        name:
+            document.getElementById(
+                "name"
+            ).value,
+
+        email:
+            document.getElementById(
+                "email"
+            ).value,
+
+        phone:
+            document.getElementById(
+                "phone"
+            ).value,
+
+        location:
+            document.getElementById(
+                "location"
+            ).value,
+
+        education:
+            document.getElementById(
+                "education"
+            ).value,
+
+        branch:
+            document.getElementById(
+                "branch"
+            ).value,
+
+        marks:
+            document.getElementById(
+                "marks"
+            ).value,
+
+        skills:
+            document.getElementById(
+                "skills"
+            ).value,
+
+        career:
+            document.getElementById(
+                "career"
+            ).value
+
+    };
+
+
+    localStorage.setItem(
+        "studentProfile",
+        JSON.stringify(profile)
+    );
+
+
+    updateProfileName();
+
+
+    alert(
+        "✅ Profile saved successfully!"
+    );
+
+}
+
+
+
+/* =========================
+   UPDATE NAME
+========================= */
+
+function updateProfileName() {
+
+
+    let name =
+        document.getElementById(
+            "name"
+        ).value;
+
+
+    if (name !== "") {
+
+        document.getElementById(
+            "profileName"
+        ).textContent =
+            name;
+
+    }
+
+}
+
+
+
+/* =========================
+   ACTIVITY COUNTS
+========================= */
+
+function loadActivity() {
+
+
+    let scholarships =
+        JSON.parse(
+            localStorage.getItem(
+                "savedScholarships"
+            )
+        ) || [];
+
+
+    let exams =
+        JSON.parse(
+            localStorage.getItem(
+                "savedExams"
+            )
+        ) || [];
+
+
+    let reminders =
+        JSON.parse(
+            localStorage.getItem(
+                "reminders"
+            )
+        ) || [];
+
+
+    document.getElementById(
+        "scholarshipCount"
+    ).textContent =
+        scholarships.length;
+
+
+    document.getElementById(
+        "examCount"
+    ).textContent =
+        exams.length;
+
+
+    document.getElementById(
+        "reminderCount"
+    ).textContent =
+        reminders.length;
+
+}
+
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+
+    let confirmLogout =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (confirmLogout) {
+
+        window.location.href =
+            "login.html";
+
+    }
+
+}
+
+
+
+/* =========================
+   RUN
+========================= */
+
+loadProfile();
+
+loadActivity();
+
+</script>
+
+
+</body>
+
+</html>

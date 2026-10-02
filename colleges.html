@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>College Suggestions - EduPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="dashboard.html">🏠 Home</a>
+
+    <a href="what-to-study.html">📚 Study</a>
+
+    <a href="jobs.html">💼 Jobs</a>
+
+    <a href="videos.html">🎥 Videos</a>
+
+    <a href="higher-studies.html">🎓 Higher Studies</a>
+
+    <a href="colleges.html">🏫 Colleges</a>
+
+    <a href="scholarships.html">💰 Scholarships</a>
+
+    <a href="ai-assistant.html">🤖 AI</a>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <h2>← College Suggestions</h2>
+
+    <p>
+        Find colleges that match your interests and career goals.
+    </p>
+
+
+    <!-- SEARCH -->
+
+    <input
+        class="search"
+        id="collegeSearch"
+        type="text"
+        placeholder="🔍 Search college or course..."
+        oninput="searchColleges()"
+    >
+
+
+    <!-- FILTER -->
+
+    <div class="categories">
+
+        <button
+            class="category active"
+            onclick="filterColleges('all', this)">
+            All
+        </button>
+
+        <button
+            class="category"
+            onclick="filterColleges('engineering', this)">
+            Engineering
+        </button>
+
+        <button
+            class="category"
+            onclick="filterColleges('medical', this)">
+            Medical
+        </button>
+
+        <button
+            class="category"
+            onclick="filterColleges('management', this)">
+            Management
+        </button>
+
+    </div>
+
+
+    <!-- ================= COLLEGE GRID ================= -->
+
+    <div
+        class="college-grid"
+        id="collegeList"
+    >
+
+
+        <!-- COLLEGE 1 -->
+
+        <div
+            class="college-card"
+            data-category="engineering"
+            data-name="IIT Madras engineering computer science">
+
+            <div class="college-top">
+
+                <div class="college-icon">
+                    🏛️
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveCollege('IIT Madras')">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                IIT Madras
+            </h3>
+
+            <p>
+                📍 Chennai, Tamil Nadu
+            </p>
+
+            <p>
+                ⭐ 4.8 / 5
+            </p>
+
+            <span class="college-tag">
+                Engineering
+            </span>
+
+            <p>
+                Computer Science, AI, Mechanical,
+                Electrical and more.
+            </p>
+
+            <button
+                class="college-btn"
+                onclick="viewCollege('IIT Madras')">
+
+                View College →
+
+            </button>
+
+        </div>
+
+
+
+        <!-- COLLEGE 2 -->
+
+        <div
+            class="college-card"
+            data-category="engineering"
+            data-name="NIT Trichy engineering">
+
+            <div class="college-top">
+
+                <div class="college-icon">
+                    🏫
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveCollege('NIT Trichy')">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                NIT Trichy
+            </h3>
+
+            <p>
+                📍 Tiruchirappalli, Tamil Nadu
+            </p>
+
+            <p>
+                ⭐ 4.7 / 5
+            </p>
+
+            <span class="college-tag">
+                Engineering
+            </span>
+
+            <p>
+                Engineering, Technology,
+                Science and Management.
+            </p>
+
+            <button
+                class="college-btn"
+                onclick="viewCollege('NIT Trichy')">
+
+                View College →
+
+            </button>
+
+        </div>
+
+
+
+        <!-- COLLEGE 3 -->
+
+        <div
+            class="college-card"
+            data-category="medical"
+            data-name="AIIMS Delhi medical">
+
+            <div class="college-top">
+
+                <div class="college-icon">
+                    🩺
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveCollege('AIIMS Delhi')">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                AIIMS Delhi
+            </h3>
+
+            <p>
+                📍 New Delhi
+            </p>
+
+            <p>
+                ⭐ 4.9 / 5
+            </p>
+
+            <span class="college-tag">
+                Medical
+            </span>
+
+            <p>
+                Medicine, Nursing, Research
+                and Healthcare.
+            </p>
+
+            <button
+                class="college-btn"
+                onclick="viewCollege('AIIMS Delhi')">
+
+                View College →
+
+            </button>
+
+        </div>
+
+
+
+        <!-- COLLEGE 4 -->
+
+        <div
+            class="college-card"
+            data-category="management"
+            data-name="IIM Ahmedabad MBA management">
+
+            <div class="college-top">
+
+                <div class="college-icon">
+                    💼
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveCollege('IIM Ahmedabad')">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                IIM Ahmedabad
+            </h3>
+
+            <p>
+                📍 Ahmedabad, Gujarat
+            </p>
+
+            <p>
+                ⭐ 4.9 / 5
+            </p>
+
+            <span class="college-tag">
+                Management
+            </span>
+
+            <p>
+                MBA, Business Management,
+                Finance and Leadership.
+            </p>
+
+            <button
+                class="college-btn"
+                onclick="viewCollege('IIM Ahmedabad')">
+
+                View College →
+
+            </button>
+
+        </div>
+
+
+
+        <!-- COLLEGE 5 -->
+
+        <div
+            class="college-card"
+            data-category="engineering"
+            data-name="Anna University engineering">
+
+            <div class="college-top">
+
+                <div class="college-icon">
+                    🎓
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveCollege('Anna University')">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                Anna University
+            </h3>
+
+            <p>
+                📍 Chennai, Tamil Nadu
+            </p>
+
+            <p>
+                ⭐ 4.6 / 5
+            </p>
+
+            <span class="college-tag">
+                Engineering
+            </span>
+
+            <p>
+                CSE, IT, ECE, Mechanical,
+                Civil and more.
+            </p>
+
+            <button
+                class="college-btn"
+                onclick="viewCollege('Anna University')">
+
+                View College →
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================
+   FILTER COLLEGES
+========================= */
+
+function filterColleges(category, button) {
+
+    let cards =
+        document.querySelectorAll(".college-card");
+
+    let buttons =
+        document.querySelectorAll(".category");
+
+
+    buttons.forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    cards.forEach(function(card) {
+
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
+
+            card.style.display = "block";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================
+   SEARCH COLLEGES
+========================= */
+
+function searchColleges() {
+
+    let search =
+        document
+        .getElementById("collegeSearch")
+        .value
+        .toLowerCase();
+
+
+    let cards =
+        document.querySelectorAll(".college-card");
+
+
+    cards.forEach(function(card) {
+
+        let name =
+            card.dataset.name;
+
+
+        if (name.includes(search)) {
+
+            card.style.display = "block";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================
+   SAVE COLLEGE
+========================= */
+
+function saveCollege(college) {
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem("savedColleges")
+        ) || [];
+
+
+    if (!saved.includes(college)) {
+
+        saved.push(college);
+
+        localStorage.setItem(
+            "savedColleges",
+            JSON.stringify(saved)
+        );
+
+        alert(
+            college +
+            " saved successfully!"
+        );
+
+    }
+
+    else {
+
+        alert(
+            college +
+            " is already saved."
+        );
+
+    }
+
+}
+
+
+
+/* =========================
+   VIEW COLLEGE
+========================= */
+
+function viewCollege(college) {
+
+    alert(
+        "Opening details for " +
+        college
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

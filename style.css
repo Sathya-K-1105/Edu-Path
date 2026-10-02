@@ -1,0 +1,3498 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7fc;
+    color: #20204a;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Center Page */
+
+.center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Card */
+
+.card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 8px 30px #2221;
+}
+
+.welcome {
+    text-align: center;
+    width: 360px;
+}
+
+.logo {
+    font-size: 60px;
+}
+
+.welcome h1 {
+    font-size: 32px;
+    margin: 8px;
+}
+
+.muted {
+    color: #777;
+}
+
+/* Buttons */
+
+.btn {
+    display: block;
+    border: 0;
+    border-radius: 10px;
+    background: #5940d8;
+    color: white;
+    padding: 13px 20px;
+    margin-top: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.secondary {
+    background: white;
+    color: #5940d8;
+    border: 1px solid #ddd;
+}
+/* Login Page */
+
+.form-card {
+    width: 380px;
+    text-align: center;
+}
+
+.form-card input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    outline: none;
+}
+
+.form-card input:not([type="checkbox"]):focus {
+    border-color: #5940d8;
+}
+
+.form-card label {
+    display: block;
+    text-align: left;
+    margin: 10px 0;
+    color: #555;
+}
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+
+    position: sticky;
+
+    top: 0;
+
+    background: white;
+
+    padding: 15px;
+
+    display: flex;
+
+    gap: 15px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    box-shadow:
+        0 2px 10px #0001;
+
+    z-index: 100;
+
+}
+
+
+nav a {
+
+    color: #20204a;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+nav a:hover {
+
+    color: #5940d8;
+
+}
+
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+
+    max-width: 1100px;
+
+    margin: 30px auto;
+
+    padding: 0 20px;
+
+}
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    margin: 15px 0;
+
+    outline: none;
+
+}
+
+
+.search:focus {
+
+    border-color: #5940d8;
+
+}
+
+
+
+/* =========================
+   BANNER
+========================= */
+
+.banner {
+
+    margin: 20px 0;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: #e9e5ff;
+
+}
+
+
+.banner h2 {
+
+    margin-top: 0;
+
+}
+
+
+.banner-btn {
+
+    display: inline-block;
+
+    margin-top: 10px;
+
+    background: #5940d8;
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =========================
+   FEATURE GRID
+========================= */
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(200px, 1fr)
+        );
+
+    gap: 18px;
+
+}
+
+
+
+/* =========================
+   FEATURE CARD
+========================= */
+
+.feature {
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 25px #0002;
+
+}
+
+
+.feature-icon {
+
+    font-size: 32px;
+
+}
+
+
+.feature b {
+
+    font-size: 17px;
+
+}
+
+
+.feature small {
+
+    color: #777;
+
+}
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin: 20px 0;
+
+    flex-wrap: wrap;
+
+}
+
+
+.category {
+
+    border: none;
+
+    background: white;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px #0001;
+
+}
+
+
+.category.active {
+
+    background: #5940d8;
+
+    color: white;
+
+}
+
+
+
+/* =========================
+   COURSE GRID
+========================= */
+
+.course-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 18px;
+
+}
+
+
+
+/* =========================
+   COURSE CARD
+========================= */
+
+.course-card {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    gap: 18px;
+
+    align-items: flex-start;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.course-card:hover {
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+.course-icon {
+
+    min-width: 55px;
+
+    height: 55px;
+
+    border-radius: 14px;
+
+    background: #eeeaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+}
+
+
+.course-card h3 {
+
+    margin: 0 0 8px 0;
+
+}
+
+
+.course-card p {
+
+    color: #777;
+
+    line-height: 1.5;
+
+}
+
+
+
+/* =========================
+   EXPLORE BUTTON
+========================= */
+
+.explore-btn {
+
+    border: none;
+
+    background: transparent;
+
+    color: #5940d8;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    padding: 0;
+
+}
+/* =========================
+   JOB LIST
+========================= */
+
+.job-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    max-width: 800px;
+
+}
+
+
+
+/* =========================
+   JOB CARD
+========================= */
+
+.job-card {
+
+    background: white;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.job-card:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+
+/* =========================
+   JOB ICON
+========================= */
+
+.job-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 14px;
+
+    background: #eeeaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+}
+
+
+
+/* =========================
+   JOB INFO
+========================= */
+
+.job-info {
+
+    flex: 1;
+
+}
+
+
+.job-info h3 {
+
+    margin: 0 0 6px 0;
+
+}
+
+
+.job-info p {
+
+    margin: 5px 0;
+
+    color: #555;
+
+}
+
+
+
+/* =========================
+   DEMAND
+========================= */
+
+.demand {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #e8f8ed;
+
+    color: #16843b;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
+.save-btn {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    color: #777;
+
+}
+
+
+.save-btn:hover {
+
+    color: #5940d8;
+
+}
+/* =========================
+   VIDEO GRID
+========================= */
+
+.video-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 20px;
+
+}
+
+
+
+/* =========================
+   VIDEO CARD
+========================= */
+
+.video-card {
+
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.video-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 25px #0002;
+
+}
+
+
+
+/* =========================
+   THUMBNAIL
+========================= */
+
+.thumbnail {
+
+    height: 170px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9e5ff,
+            #dcd5ff
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.play {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+
+    background: #5940d8;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+
+}
+
+
+
+/* =========================
+   VIDEO CONTENT
+========================= */
+
+.video-content {
+
+    padding: 18px;
+
+}
+
+
+.video-content h3 {
+
+    margin:
+        0 0 8px 0;
+
+}
+
+
+.video-content p {
+
+    color: #777;
+
+    line-height: 1.5;
+
+}
+
+
+.duration {
+
+    display: block;
+
+    color: #666;
+
+    font-size: 13px;
+
+    margin:
+        10px 0;
+
+}
+
+
+
+/* =========================
+   WATCH BUTTON
+========================= */
+
+.watch-btn {
+
+    border: none;
+
+    background: #5940d8;
+
+    color: white;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+.watch-btn:hover {
+
+    opacity: 0.9;
+
+}
+/* =========================
+   HIGHER STUDIES
+========================= */
+
+.higher-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 20px;
+
+}
+
+
+.higher-card {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.higher-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 25px #0002;
+
+}
+
+
+.higher-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 16px;
+
+    background: #eeeaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 32px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.higher-card h3 {
+
+    font-size: 22px;
+
+    margin: 8px 0;
+
+}
+
+
+.higher-card p {
+
+    color: #666;
+
+    line-height: 1.5;
+
+}
+
+
+.higher-card ul {
+
+    padding-left: 20px;
+
+    color: #555;
+
+    line-height: 1.8;
+
+}
+
+
+.study-btn {
+
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 11px 16px;
+
+    background: #5940d8;
+
+    color: white;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+}
+/* =========================
+   COLLEGE GRID
+========================= */
+
+.college-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 20px;
+
+}
+
+
+
+/* =========================
+   COLLEGE CARD
+========================= */
+
+.college-card {
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.college-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 25px #0002;
+
+}
+
+
+
+/* =========================
+   COLLEGE TOP
+========================= */
+
+.college-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.college-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 15px;
+
+    background: #eeeaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+}
+
+
+
+/* =========================
+   HEART
+========================= */
+
+.heart-btn {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    color: #777;
+
+}
+
+
+.heart-btn:hover {
+
+    color: #5940d8;
+
+}
+
+
+
+/* =========================
+   COLLEGE TAG
+========================= */
+
+.college-tag {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #eeeaff;
+
+    color: #5940d8;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =========================
+   COLLEGE BUTTON
+========================= */
+
+.college-btn {
+
+    width: 100%;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #5940d8;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.college-btn:hover {
+
+    opacity: 0.9;
+
+}
+/* =========================
+   SCHOLARSHIP GRID
+========================= */
+
+.scholarship-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 20px;
+
+}
+
+
+
+/* =========================
+   SCHOLARSHIP CARD
+========================= */
+
+.scholarship-card {
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.scholarship-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 25px #0002;
+
+}
+
+
+
+/* =========================
+   TOP
+========================= */
+
+.scholarship-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.scholarship-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 15px;
+
+    background: #eeeaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+}
+
+
+
+/* =========================
+   TAG
+========================= */
+
+.scholarship-tag {
+
+    display: inline-block;
+
+    background: #eeeaff;
+
+    color: #5940d8;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =========================
+   AMOUNT
+========================= */
+
+.amount {
+
+    margin-top: 12px;
+
+    font-weight: bold;
+
+    color: #333;
+
+}
+
+
+
+/* =========================
+   ELIGIBILITY
+========================= */
+
+.eligibility {
+
+    margin-top: 8px;
+
+    color: #16843b;
+
+    font-size: 14px;
+
+}
+
+
+
+/* =========================
+   APPLY BUTTON
+========================= */
+
+.apply-btn {
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #5940d8;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.apply-btn:hover {
+
+    opacity: 0.9;
+
+}
+/* =========================
+   ELIGIBILITY
+========================= */
+
+.eligibility-container {
+
+    max-width: 650px;
+
+    margin: auto;
+
+}
+
+
+.eligibility-form {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+}
+
+
+.eligibility-form label {
+
+    display: block;
+
+    margin-top: 15px;
+
+    margin-bottom: 6px;
+
+    font-weight: bold;
+
+}
+
+
+.eligibility-form input,
+.eligibility-form select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+}
+
+
+.eligibility-form input:focus,
+.eligibility-form select:focus {
+
+    border-color: #5940d8;
+
+}
+
+
+
+/* =========================
+   CHECK BUTTON
+========================= */
+
+.check-btn {
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #5940d8;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.check-btn:hover {
+
+    opacity: 0.9;
+
+}
+
+
+
+/* =========================
+   RESULT
+========================= */
+
+.eligibility-result {
+
+    margin-top: 20px;
+
+}
+
+
+.eligible,
+.not-eligible {
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+}
+
+
+.eligible {
+
+    background: #e9f8ee;
+
+}
+
+
+.not-eligible {
+
+    background: #fff0f0;
+
+}
+
+
+.result-icon {
+
+    font-size: 45px;
+
+}
+
+
+.eligible h3 {
+
+    color: #16843b;
+
+}
+
+
+.not-eligible h3 {
+
+    color: #c62828;
+
+}
+
+
+.result-btn {
+
+    margin-top: 12px;
+
+    padding: 11px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #5940d8;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+/* =========================
+   EXAM GRID
+========================= */
+
+.exam-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 20px;
+
+}
+
+
+
+/* =========================
+   EXAM CARD
+========================= */
+
+.exam-card {
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.exam-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 25px #0002;
+
+}
+
+
+
+/* =========================
+   EXAM TOP
+========================= */
+
+.exam-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.exam-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 15px;
+
+    background: #eeeaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+}
+
+
+
+/* =========================
+   EXAM TAG
+========================= */
+
+.exam-tag {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #eeeaff;
+
+    color: #5940d8;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =========================
+   EXAM INFO
+========================= */
+
+.exam-info {
+
+    margin-top: 9px;
+
+    color: #555;
+
+    font-size: 14px;
+
+}
+
+
+
+/* =========================
+   PREPARE BUTTON
+========================= */
+
+.prepare-btn {
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #5940d8;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.prepare-btn:hover {
+
+    opacity: 0.9;
+
+}
+/* =========================
+   AI ASSISTANT
+========================= */
+
+.ai-container {
+
+    max-width: 800px;
+
+    margin: auto;
+
+}
+
+
+.ai-box {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+}
+
+
+.ai-box h3 {
+
+    margin-top: 0;
+
+}
+
+
+.ai-box textarea {
+
+    width: 100%;
+
+    min-height: 120px;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    resize: vertical;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+}
+
+
+.ai-box textarea:focus {
+
+    border-color: #5940d8;
+
+}
+
+
+
+/* =========================
+   QUICK OPTIONS
+========================= */
+
+.quick-options {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+}
+
+
+.quick-options button {
+
+    border: 1px solid #ddd;
+
+    background: #f8f7ff;
+
+    padding: 9px 13px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+}
+
+
+.quick-options button:hover {
+
+    background: #eeeaff;
+
+}
+
+
+
+/* =========================
+   AI BUTTON
+========================= */
+
+.ai-btn {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #5940d8;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+}
+
+
+.ai-btn:hover {
+
+    opacity: 0.9;
+
+}
+
+
+
+/* =========================
+   RESULT
+========================= */
+
+.ai-result {
+
+    margin-top: 25px;
+
+}
+
+
+.ai-success {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+}
+
+
+.ai-result-icon {
+
+    font-size: 50px;
+
+    text-align: center;
+
+}
+
+
+.ai-success h2 {
+
+    text-align: center;
+
+    margin-bottom: 5px;
+
+}
+
+
+.ai-field {
+
+    text-align: center;
+
+    color: #5940d8;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =========================
+   RECOMMENDATION GRID
+========================= */
+
+.recommendation-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+
+.recommendation-item {
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    background: #f8f7ff;
+
+}
+
+
+.recommendation-item span {
+
+    display: block;
+
+    color: #666;
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.recommendation-item b {
+
+    display: block;
+
+    line-height: 1.5;
+
+}
+
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.ai-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+
+.result-btn {
+
+    display: inline-block;
+
+    padding: 11px 15px;
+
+    background: #5940d8;
+
+    color: white;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =========================
+   ERROR
+========================= */
+
+.ai-error {
+
+    background: #fff0f0;
+
+    color: #c62828;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+}
+/* =========================
+   IMPORTANT DATES
+========================= */
+
+.dates-container {
+
+    max-width: 850px;
+
+    margin: auto;
+
+}
+
+
+.date-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+.date-card {
+
+    background: white;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    transition: 0.3s;
+
+}
+
+
+.date-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 25px #0002;
+
+}
+
+
+/* DATE BOX */
+
+.date-box {
+
+    min-width: 90px;
+
+    height: 80px;
+
+    border-radius: 15px;
+
+    background: #eeeaff;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.date-box span {
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+}
+
+
+.date-box strong {
+
+    font-size: 22px;
+
+    margin-top: 5px;
+
+}
+
+
+/* INFO */
+
+.date-info {
+
+    flex: 1;
+
+}
+
+
+.date-info h3 {
+
+    margin: 0 0 8px 0;
+
+}
+
+
+.date-info p {
+
+    margin: 5px 0;
+
+    color: #666;
+
+}
+
+
+.date-tag {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+/* REMINDER */
+
+.reminder-btn {
+
+    border: none;
+
+    background: #5940d8;
+
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+.reminder-btn:hover {
+
+    opacity: 0.9;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .date-card {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .date-box {
+
+        width: 100%;
+
+    }
+
+}/* =========================
+   SAVED PAGE
+========================= */
+
+.saved-container {
+
+    max-width: 900px;
+
+    margin: auto;
+
+}
+
+
+.saved-summary {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(180px, 1fr)
+        );
+
+    gap: 15px;
+
+    margin: 25px 0;
+
+}
+
+
+.summary-card {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    text-align: center;
+
+}
+
+
+.summary-card span {
+
+    display: block;
+
+    font-size: 30px;
+
+}
+
+
+.summary-card b {
+
+    display: block;
+
+    font-size: 28px;
+
+    margin: 5px;
+
+}
+
+
+.summary-card small {
+
+    color: #666;
+
+}
+
+
+
+/* =========================
+   SECTION
+========================= */
+
+.saved-container section {
+
+    margin-top: 30px;
+
+}
+
+
+.saved-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+
+/* =========================
+   SAVED ITEM
+========================= */
+
+.saved-item {
+
+    background: white;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 3px 12px #0001;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.saved-item > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.saved-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eeeaff;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+
+}
+
+
+.saved-item button {
+
+    border: none;
+
+    background: #fff0f0;
+
+    padding: 9px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty-state {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow:
+        0 3px 12px #0001;
+
+    color: #666;
+
+}
+
+
+.empty-state p {
+
+    margin: 10px 0;
+
+}
+
+
+.empty-state a {
+
+    color: #5940d8;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+}
+/* =========================
+   PROFILE
+========================= */
+
+.profile-container {
+
+    max-width: 750px;
+
+    margin: auto;
+
+}
+
+
+.profile-header {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    margin-bottom: 20px;
+
+}
+
+
+.profile-avatar {
+
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: #eeeaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 38px;
+
+}
+
+
+.profile-header h2 {
+
+    margin: 0;
+
+}
+
+
+.profile-header p {
+
+    margin: 5px 0;
+
+    color: #666;
+
+}
+
+
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.profile-card {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 4px 15px #0001;
+
+    margin-bottom: 20px;
+
+}
+
+
+.profile-card h3 {
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+}
+
+
+.profile-card label {
+
+    display: block;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.profile-card input,
+.profile-card select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    outline: none;
+
+}
+
+
+.profile-card input:focus,
+.profile-card select:focus {
+
+    border-color: #5940d8;
+
+}
+
+
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
+.save-profile-btn {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #5940d8;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    margin-bottom: 20px;
+
+}
+
+
+.save-profile-btn:hover {
+
+    opacity: 0.9;
+
+}
+
+
+
+/* =========================
+   PROFILE STATS
+========================= */
+
+.profile-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 15px;
+
+}
+
+
+.profile-stats div {
+
+    background: #f8f7ff;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+}
+
+
+.profile-stats b {
+
+    display: block;
+
+    font-size: 25px;
+
+    color: #5940d8;
+
+}
+
+
+.profile-stats span {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #666;
+
+    font-size: 13px;
+
+}
+
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.logout-btn {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #d32f2f;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.logout-btn:hover {
+
+    opacity: 0.9;
+
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .profile-stats {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+/* =========================
+   CAREER VIDEOS PAGE
+========================= */
+
+.career-video-grid {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.video-card {
+    display: block;
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    text-decoration: none;
+
+    color: #18245c;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+
+.video-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.video-card > div {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+
+.video-card h3 {
+    font-size: 20px;
+
+    margin: 0 0 10px;
+
+    color: #18245c;
+}
+
+
+.video-card p {
+    font-size: 14px;
+
+    color: #666;
+
+    line-height: 1.5;
+
+    margin-bottom: 18px;
+}
+
+
+.video-card span {
+    display: inline-block;
+
+    background: #5940d8;
+
+    color: white;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.video-card span:hover {
+    background: #4530b5;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+main h1 {
+    text-align: center;
+
+    margin-top: 30px;
+
+    color: #18245c;
+}
+
+
+main > p {
+    text-align: center;
+
+    color: #666;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .career-video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .career-video-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =====================================
+   WHAT TO STUDY PAGE
+===================================== */
+
+.top-header {
+
+    height: 70px;
+
+    background: white;
+
+    border-bottom: 1px solid #eee;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.brand-icon {
+
+    font-size: 32px;
+
+}
+
+
+.brand h2 {
+
+    margin: 0;
+
+    color: #3726c9;
+
+}
+
+
+.brand p {
+
+    margin: 0;
+
+    font-size: 11px;
+
+    color: #777;
+
+}
+
+
+.top-search {
+
+    width: 400px;
+
+    height: 42px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 15px;
+
+}
+
+
+.top-search input {
+
+    border: none;
+
+    outline: none;
+
+    flex: 1;
+
+    padding: 10px;
+
+}
+
+
+.top-search button {
+
+    height: 42px;
+
+    width: 50px;
+
+    border: none;
+
+    background: #5940d8;
+
+    color: white;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+}
+
+
+.profile-mini {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.profile-mini small {
+
+    display: block;
+
+    color: #777;
+
+}
+
+
+.avatar {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #eee9ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    color: #5940d8;
+
+}
+
+
+
+/* =====================================
+   LAYOUT
+===================================== */
+
+.page-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        220px 1fr 280px;
+
+    min-height: calc(100vh - 70px);
+
+    background: #fafaff;
+
+}
+
+
+
+/* =====================================
+   SIDEBAR
+===================================== */
+
+.sidebar {
+
+    background: white;
+
+    padding: 20px 12px;
+
+    border-right: 1px solid #eee;
+
+}
+
+
+.side-logo {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: #3726c9;
+
+    margin-bottom: 25px;
+
+    padding: 10px;
+
+}
+
+
+.sidebar a {
+
+    display: block;
+
+    padding: 12px;
+
+    margin: 5px 0;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    color: #30304a;
+
+    font-size: 14px;
+
+}
+
+
+.sidebar a:hover {
+
+    background: #f1efff;
+
+    color: #4d35d5;
+
+}
+
+
+.sidebar a.active {
+
+    background: #eeeaff;
+
+    color: #5037d3;
+
+    font-weight: bold;
+
+}
+
+
+.sidebar .logout {
+
+    color: #e33b4b;
+
+    margin-top: 20px;
+
+}
+
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.study-main {
+
+    padding: 30px;
+
+}
+
+
+.study-heading h1 {
+
+    margin: 0;
+
+    color: #17172e;
+
+    font-size: 28px;
+
+}
+
+
+.study-heading p {
+
+    color: #666;
+
+    margin-top: 7px;
+
+}
+
+
+
+/* =====================================
+   COURSE SEARCH
+===================================== */
+
+.course-search {
+
+    background: white;
+
+    border: 1px solid #8d76ff;
+
+    border-radius: 10px;
+
+    padding: 13px 15px;
+
+    margin: 25px 0 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.course-search input {
+
+    border: none;
+
+    outline: none;
+
+    width: 100%;
+
+    font-size: 14px;
+
+}
+
+
+
+/* =====================================
+   CATEGORIES
+===================================== */
+
+.categories {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+
+}
+
+
+.category {
+
+    padding: 9px 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+}
+
+
+.category:hover {
+
+    border-color: #5940d8;
+
+}
+
+
+.active-category {
+
+    background: #5940d8;
+
+    color: white;
+
+    border-color: #5940d8;
+
+}
+
+
+
+/* =====================================
+   COURSE GRID
+===================================== */
+
+.course-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.course-card {
+
+    background: white;
+
+    border: 1px solid #e8e8ef;
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    transition: 0.25s;
+
+}
+
+
+.course-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 25px #00000012;
+
+}
+
+
+.course-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.blue {
+    background: #1685e8;
+}
+
+.green {
+    background: #29ad73;
+}
+
+.pink {
+    background: #ec4d8b;
+}
+
+.orange {
+    background: #ff7929;
+}
+
+.purple {
+    background: #7650dc;
+}
+
+.teal {
+    background: #169eac;
+}
+
+.yellow {
+    background: #ffb321;
+}
+
+.cyan {
+    background: #35a7bc;
+}
+
+
+.course-card h3 {
+
+    margin: 0 0 5px;
+
+    font-size: 16px;
+
+    color: #1e1e32;
+
+}
+
+
+.course-card span {
+
+    color: #666;
+
+    font-size: 12px;
+
+}
+
+
+.course-card p {
+
+    font-size: 12px;
+
+    color: #666;
+
+    line-height: 1.5;
+
+    min-height: 45px;
+
+}
+
+
+.course-card button {
+
+    border: none;
+
+    background: none;
+
+    color: #4c35df;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+
+/* =====================================
+   MORE
+===================================== */
+
+.more-categories {
+
+    display: block;
+
+    margin: 20px auto;
+
+    padding: 10px 30px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    border-radius: 9px;
+
+    color: #4934d4;
+
+    cursor: pointer;
+
+}
+
+
+
+/* =====================================
+   RIGHT SIDEBAR
+===================================== */
+
+.popular-sidebar {
+
+    padding: 20px 15px;
+
+}
+
+
+.popular-box {
+
+    background: white;
+
+    border: 1px solid #eee;
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+}
+
+
+.popular-box h2 {
+
+    font-size: 17px;
+
+    margin-top: 0;
+
+}
+
+
+.popular-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 0;
+
+}
+
+
+.popular-item b {
+
+    display: block;
+
+    font-size: 13px;
+
+}
+
+
+.popular-item small {
+
+    color: #777;
+
+    font-size: 11px;
+
+}
+
+
+.view-all {
+
+    border: none;
+
+    background: none;
+
+    color: #4934d4;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+}
+
+
+
+/* =====================================
+   AI BOX
+===================================== */
+
+.ai-box {
+
+    margin-top: 15px;
+
+    background: #eee9ff;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.ai-box h2 {
+
+    color: #5037d3;
+
+    font-size: 18px;
+
+}
+
+
+.ai-box p {
+
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+.robot {
+
+    font-size: 55px;
+
+    text-align: right;
+
+}
+
+
+.ai-box button {
+
+    background: #5940d8;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 1100px) {
+
+    .page-layout {
+
+        grid-template-columns:
+            190px 1fr;
+
+    }
+
+    .popular-sidebar {
+
+        display: none;
+
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .top-header {
+
+        padding: 0 15px;
+
+    }
+
+    .brand {
+
+        display: none;
+
+    }
+
+    .top-search {
+
+        width: 60%;
+
+    }
+
+    .page-layout {
+
+        display: block;
+
+    }
+
+    .sidebar {
+
+        display: none;
+
+    }
+
+    .course-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .study-main {
+
+        padding: 15px;
+
+    }
+
+    .course-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

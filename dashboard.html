@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Dashboard - EduPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="dashboard.html">
+        🏠 Home
+    </a>
+
+    <a href="what-to-study.html">
+        📚 What to Study
+    </a>
+
+    <a href="jobs.html">
+        💼 Jobs & Salary
+    </a>
+
+    <a href="videos.html">
+        🎥 Career Videos
+    </a>
+
+    <a href="higher-studies.html">
+        🎓 Higher Studies
+    </a>
+
+    <a href="colleges.html">
+        🏫 Colleges
+    </a>
+
+    <a href="scholarships.html">
+        💰 Scholarships
+    </a>
+
+    <a href="eligibility.html">
+        ✅ Eligibility
+    </a>
+
+    <a href="exams.html">
+        📝 Exams
+    </a>
+
+    <a href="ai-assistant.html">
+        🤖 AI Assistant
+    </a>
+
+    <a href="profile.html">
+        👤 Profile
+    </a>
+
+</nav>
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main>
+
+
+    <!-- Welcome -->
+
+    <h2>
+        Hello,
+        <span id="user">Student</span>
+        👋
+    </h2>
+
+    <p>
+        What do you want to explore today?
+    </p>
+
+
+
+    <!-- Search -->
+
+    <input
+        class="search"
+        type="text"
+        placeholder="🔍 Search exams, colleges, careers..."
+        oninput="searchFeatures(this.value)"
+    >
+
+
+
+    <!-- ================= BANNER ================= -->
+
+    <div class="banner">
+
+        <h2>
+            🎯 Discover 1000+ Careers
+        </h2>
+
+        <p>
+            Find the best career path for your future.
+        </p>
+
+        <a
+            class="banner-btn"
+            href="what-to-study.html"
+        >
+            Explore Careers →
+        </a>
+
+    </div>
+
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <h3>
+        Features
+    </h3>
+
+
+    <div class="grid" id="features">
+
+
+        <!-- What to Study -->
+
+        <a
+            class="feature"
+            href="what-to-study.html"
+        >
+
+            <span class="feature-icon">
+                📚
+            </span>
+
+            <b>
+                What to Study
+            </b>
+
+            <small>
+                Find suitable courses
+            </small>
+
+        </a>
+
+
+
+        <!-- Jobs -->
+
+        <a
+            class="feature"
+            href="jobs.html"
+        >
+
+            <span class="feature-icon">
+                💼
+            </span>
+
+            <b>
+                Job & Salary
+            </b>
+
+            <small>
+                Explore career opportunities
+            </small>
+
+        </a>
+
+
+
+        <!-- Videos -->
+
+        <a
+            class="feature"
+            href="videos.html"
+        >
+
+            <span class="feature-icon">
+                🎥
+            </span>
+
+            <b>
+                Career Videos
+            </b>
+
+            <small>
+                Learn about careers
+            </small>
+
+        </a>
+
+
+
+        <!-- Higher Studies -->
+
+        <a
+            class="feature"
+            href="higher-studies.html"
+        >
+
+            <span class="feature-icon">
+                🎓
+            </span>
+
+            <b>
+                Higher Studies
+            </b>
+
+            <small>
+                M.Tech, MBA, MS & PhD
+            </small>
+
+        </a>
+
+
+
+        <!-- Colleges -->
+
+        <a
+            class="feature"
+            href="colleges.html"
+        >
+
+            <span class="feature-icon">
+                🏫
+            </span>
+
+            <b>
+                College Suggestions
+            </b>
+
+            <small>
+                Find suitable colleges
+            </small>
+
+        </a>
+
+
+
+        <!-- Scholarships -->
+
+        <a
+            class="feature"
+            href="scholarships.html"
+        >
+
+            <span class="feature-icon">
+                💰
+            </span>
+
+            <b>
+                Scholarships
+            </b>
+
+            <small>
+                Find financial support
+            </small>
+
+        </a>
+
+
+
+        <!-- Eligibility -->
+
+        <a
+            class="feature"
+            href="eligibility.html"
+        >
+
+            <span class="feature-icon">
+                ✅
+            </span>
+
+            <b>
+                Eligibility Checker
+            </b>
+
+            <small>
+                Check your eligibility
+            </small>
+
+        </a>
+
+
+
+        <!-- Exams -->
+
+        <a
+            class="feature"
+            href="exams.html"
+        >
+
+            <span class="feature-icon">
+                📝
+            </span>
+
+            <b>
+                Entrance Exams
+            </b>
+
+            <small>
+                JEE, NEET, CAT, GATE
+            </small>
+
+        </a>
+
+
+
+        <!-- AI -->
+
+        <a
+            class="feature"
+            href="ai-assistant.html"
+        >
+
+            <span class="feature-icon">
+                🤖
+            </span>
+
+            <b>
+                AI Assistant
+            </b>
+
+            <small>
+                Ask career questions
+            </small>
+
+        </a>
+
+
+
+        <!-- Important Dates -->
+
+        <a
+            class="feature"
+            href="important-dates.html"
+        >
+
+            <span class="feature-icon">
+                📅
+            </span>
+
+            <b>
+                Important Dates
+            </b>
+
+            <small>
+                Track exam deadlines
+            </small>
+
+        </a>
+
+
+
+        <!-- Saved -->
+
+        <a
+            class="feature"
+            href="saved.html"
+        >
+
+            <span class="feature-icon">
+                ❤️
+            </span>
+
+            <b>
+                Saved
+            </b>
+
+            <small>
+                Your saved items
+            </small>
+
+        </a>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+// Get logged-in user
+
+let user =
+    localStorage.getItem("edupathUser");
+
+
+// Display username
+
+if (user) {
+
+    document.getElementById("user")
+        .textContent = user;
+
+}
+
+
+
+// Search Features
+
+function searchFeatures(value) {
+
+    value =
+        value.toLowerCase();
+
+
+    let cards =
+        document.querySelectorAll(".feature");
+
+
+    cards.forEach(function(card) {
+
+        let text =
+            card.innerText.toLowerCase();
+
+
+        if (text.includes(value)) {
+
+            card.style.display = "flex";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

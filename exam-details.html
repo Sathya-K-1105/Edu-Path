@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Exam Details | EduPath AI</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f7f7fc;
+    color:#22223f;
+}
+
+
+/* HEADER */
+
+.header{
+    height:70px;
+    background:white;
+    border-bottom:1px solid #e5e5ef;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 30px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-icon{
+    font-size:30px;
+}
+
+.logo h2{
+    color:#5037d5;
+    font-size:20px;
+}
+
+.logo small{
+    color:#777;
+    font-size:10px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.profile{
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    background:#eeeaff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#5037d5;
+    font-weight:bold;
+}
+
+
+/* LAYOUT */
+
+.layout{
+    display:grid;
+
+    grid-template-columns:
+    210px 1fr;
+
+    min-height:calc(100vh - 70px);
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+    background:white;
+
+    border-right:1px solid #eee;
+
+    padding:20px 12px;
+}
+
+.sidebar-title{
+    color:#5037d5;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    padding:10px;
+
+    margin-bottom:15px;
+}
+
+.sidebar a{
+    display:block;
+
+    text-decoration:none;
+
+    color:#333;
+
+    padding:12px;
+
+    margin:4px 0;
+
+    border-radius:9px;
+
+    font-size:13px;
+}
+
+.sidebar a:hover{
+    background:#f0edff;
+
+    color:#5037d5;
+}
+
+.sidebar a.active{
+    background:#eeeaff;
+
+    color:#5037d5;
+
+    font-weight:bold;
+}
+
+
+/* MAIN */
+
+.main{
+    padding:30px;
+
+    max-width:1100px;
+
+    width:100%;
+
+    margin:auto;
+}
+
+.back{
+    text-decoration:none;
+
+    color:#5037d5;
+
+    font-size:13px;
+}
+
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(
+        135deg,
+        #5b3fe4,
+        #7b62ef
+    );
+
+    color:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.hero-left{
+    display:flex;
+
+    gap:20px;
+
+    align-items:center;
+}
+
+.exam-big-icon{
+    width:75px;
+    height:75px;
+
+    background:rgba(255,255,255,.18);
+
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:40px;
+}
+
+.hero h1{
+    font-size:30px;
+
+    margin-bottom:7px;
+}
+
+.hero p{
+    opacity:.9;
+
+    font-size:14px;
+}
+
+.hero-badge{
+    background:white;
+
+    color:#5037d5;
+
+    padding:9px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+
+/* QUICK INFO */
+
+.quick-info{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:12px;
+
+    margin-top:20px;
+}
+
+.quick-card{
+    background:white;
+
+    border:1px solid #e5e5ef;
+
+    border-radius:12px;
+
+    padding:17px;
+}
+
+.quick-card span{
+    color:#777;
+
+    font-size:11px;
+}
+
+.quick-card b{
+    display:block;
+
+    margin-top:6px;
+
+    font-size:14px;
+}
+
+
+/* SECTION */
+
+.section{
+    background:white;
+
+    border:1px solid #e5e5ef;
+
+    border-radius:14px;
+
+    padding:22px;
+
+    margin-top:18px;
+}
+
+.section h2{
+    font-size:19px;
+
+    color:#292957;
+
+    margin-bottom:15px;
+}
+
+.section p{
+    color:#555;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+/* TABLE */
+
+.details-table{
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+.details-table tr{
+    border-bottom:1px solid #eee;
+}
+
+.details-table tr:last-child{
+    border-bottom:none;
+}
+
+.details-table td{
+    padding:13px 8px;
+
+    font-size:13px;
+}
+
+.details-table td:first-child{
+    width:35%;
+
+    color:#777;
+
+    font-weight:bold;
+}
+
+.details-table td:last-child{
+    color:#25254b;
+}
+
+
+/* ELIGIBILITY */
+
+.eligibility-list{
+    padding-left:20px;
+}
+
+.eligibility-list li{
+    margin:10px 0;
+
+    color:#555;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+
+/* SUBJECTS */
+
+.subjects{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:12px;
+}
+
+.subject{
+    background:#f5f3ff;
+
+    border-radius:10px;
+
+    padding:15px;
+
+    text-align:center;
+
+    color:#5037d5;
+
+    font-weight:bold;
+
+    font-size:13px;
+}
+
+
+/* STEPS */
+
+.steps{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:12px;
+}
+
+.step{
+    border:1px solid #eee;
+
+    border-radius:10px;
+
+    padding:15px;
+}
+
+.step-number{
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:#eeeaff;
+
+    color:#5037d5;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+}
+
+.step b{
+    font-size:13px;
+}
+
+.step p{
+    font-size:11px;
+
+    margin-top:6px;
+}
+
+
+/* SYLLABUS */
+
+.syllabus{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:12px;
+}
+
+.syllabus-card{
+    padding:16px;
+
+    background:#fafaff;
+
+    border:1px solid #eee;
+
+    border-radius:10px;
+}
+
+.syllabus-card h3{
+    font-size:14px;
+
+    color:#5037d5;
+
+    margin-bottom:8px;
+}
+
+.syllabus-card p{
+    font-size:12px;
+}
+
+
+/* COLLEGES */
+
+.colleges{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:10px;
+}
+
+.college{
+    background:#f8f8fc;
+
+    border-radius:9px;
+
+    padding:13px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+
+/* TIPS */
+
+.tips li{
+    margin:10px 0;
+
+    color:#555;
+
+    font-size:13px;
+}
+
+
+/* BUTTONS */
+
+.action-buttons{
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.btn{
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+.primary{
+    background:#5b3fe4;
+
+    color:white;
+}
+
+.secondary{
+    background:#eeeaff;
+
+    color:#5037d5;
+}
+
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+
+    color:#888;
+
+    font-size:11px;
+
+    margin:30px 0;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+    .layout{
+        display:block;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        padding:20px;
+    }
+
+    .quick-info{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .subjects{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .colleges{
+        grid-template-columns:
+        1fr;
+    }
+
+    .syllabus{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        <div>
+
+            <h2>EduPath AI</h2>
+
+            <small>
+                Your Career, Our Guidance
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        🔔
+
+        <div class="profile">
+            SK
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<div class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        🎓 EduPath AI
+    </div>
+
+
+    <a href="dashboard.html">
+        🏠 Dashboard
+    </a>
+
+
+    <a href="what-to-study.html">
+        📚 What to Study
+    </a>
+
+
+    <a href="videos.html">
+        🎥 Career Videos
+    </a>
+
+
+    <a href="jobs.html">
+        💼 Job & Salary
+    </a>
+
+
+    <a href="higher-studies.html">
+        🎓 Higher Studies
+    </a>
+
+
+    <a href="colleges.html">
+        🏫 College Suggestions
+    </a>
+
+
+    <a href="scholarships.html">
+        🎁 Scholarships
+    </a>
+
+
+    <a href="eligibility.html">
+        ✅ Eligibility Checker
+    </a>
+
+
+    <a href="exams.html"
+       class="active">
+        📝 Entrance Exams
+    </a>
+
+
+    <a href="important-dates.html">
+        📅 Important Dates
+    </a>
+
+
+    <a href="saved.html">
+        ❤️ Saved
+    </a>
+
+
+    <a href="ai-assistant.html">
+        🤖 AI Assistant
+    </a>
+
+
+</aside>
+
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+<a href="exams.html"
+   class="back">
+
+    ← Back to Entrance Exams
+
+</a>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <div
+        class="exam-big-icon"
+        id="examIcon">
+
+            ⚙️
+
+        </div>
+
+
+        <div>
+
+            <h1 id="examName">
+                JEE Main
+            </h1>
+
+            <p id="examFullName">
+                Joint Entrance Examination
+                (Main)
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-badge"
+         id="examLevel">
+
+        National Level
+
+    </div>
+
+</section>
+
+
+
+<!-- QUICK INFORMATION -->
+
+<div class="quick-info">
+
+
+    <div class="quick-card">
+
+        <span>
+            Conducted By
+        </span>
+
+        <b id="conductedBy">
+            NTA
+        </b>
+
+    </div>
+
+
+    <div class="quick-card">
+
+        <span>
+            Course
+        </span>
+
+        <b id="course">
+            B.E / B.Tech
+        </b>
+
+    </div>
+
+
+    <div class="quick-card">
+
+        <span>
+            Mode
+        </span>
+
+        <b id="mode">
+            Computer Based Test
+        </b>
+
+    </div>
+
+
+    <div class="quick-card">
+
+        <span>
+            Frequency
+        </span>
+
+        <b id="frequency">
+            Multiple Sessions
+        </b>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ABOUT -->
+
+<section class="section">
+
+    <h2>
+        📖 About the Exam
+    </h2>
+
+    <p id="aboutExam">
+
+        JEE Main is a national-level entrance
+        examination used for admission to
+        undergraduate engineering and other
+        programs at participating institutions.
+
+    </p>
+
+</section>
+
+
+
+<!-- ELIGIBILITY -->
+
+<section class="section">
+
+    <h2>
+        ✅ Eligibility Criteria
+    </h2>
+
+
+    <ul
+    class="eligibility-list"
+    id="eligibility">
+
+        <li>
+            Candidates should have passed or
+            be appearing in the required
+            qualifying examination.
+        </li>
+
+        <li>
+            Physics and Mathematics are
+            important subjects for B.E./B.Tech.
+        </li>
+
+        <li>
+            Candidates must satisfy the
+            admission requirements of the
+            respective institute.
+        </li>
+
+        <li>
+            Always verify the current year's
+            official information bulletin.
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- SUBJECTS -->
+
+<section class="section">
+
+    <h2>
+        📚 Subjects
+    </h2>
+
+
+    <div class="subjects"
+         id="subjects">
+
+        <div class="subject">
+            Mathematics
+        </div>
+
+        <div class="subject">
+            Physics
+        </div>
+
+        <div class="subject">
+            Chemistry
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- EXAM PATTERN -->
+
+<section class="section">
+
+    <h2>
+        📝 Exam Pattern
+    </h2>
+
+
+    <table
+    class="details-table">
+
+        <tr>
+
+            <td>
+                Examination Mode
+            </td>
+
+            <td id="patternMode">
+                Computer Based Test
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Question Type
+            </td>
+
+            <td id="questionType">
+                Multiple Choice / Numerical
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Subjects
+            </td>
+
+            <td id="patternSubjects">
+                Physics, Chemistry, Mathematics
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Duration
+            </td>
+
+            <td id="duration">
+                As specified in the current bulletin
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Marking Scheme
+            </td>
+
+            <td id="marking">
+                Refer to current year bulletin
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+
+
+<!-- SYLLABUS -->
+
+<section class="section">
+
+    <h2>
+        📚 Syllabus
+    </h2>
+
+
+    <div
+    class="syllabus"
+    id="syllabus">
+
+        <div class="syllabus-card">
+
+            <h3>
+                🔢 Mathematics
+            </h3>
+
+            <p>
+                Algebra, Calculus, Coordinate
+                Geometry, Trigonometry,
+                Probability and Statistics.
+            </p>
+
+        </div>
+
+
+        <div class="syllabus-card">
+
+            <h3>
+                ⚡ Physics
+            </h3>
+
+            <p>
+                Mechanics, Electricity,
+                Magnetism, Optics,
+                Modern Physics and more.
+            </p>
+
+        </div>
+
+
+        <div class="syllabus-card">
+
+            <h3>
+                🧪 Chemistry
+            </h3>
+
+            <p>
+                Physical Chemistry,
+                Organic Chemistry and
+                Inorganic Chemistry.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- APPLICATION PROCESS -->
+
+<section class="section">
+
+    <h2>
+        📝 How to Apply
+    </h2>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <b>
+                Visit Official Website
+            </b>
+
+            <p>
+                Open the official examination
+                portal.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <b>
+                Registration
+            </b>
+
+            <p>
+                Create your candidate
+                registration.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <b>
+                Fill Application
+            </b>
+
+            <p>
+                Enter personal and
+                academic information.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <b>
+                Submit
+            </b>
+
+            <p>
+                Upload required documents
+                and submit the application.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- COLLEGES -->
+
+<section class="section">
+
+    <h2>
+        🏫 Important Institutions
+    </h2>
+
+
+    <div
+    class="colleges"
+    id="colleges">
+
+        <div class="college">
+            IITs
+        </div>
+
+        <div class="college">
+            NITs
+        </div>
+
+        <div class="college">
+            IIITs
+        </div>
+
+        <div class="college">
+            Other Participating Institutes
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PREPARATION -->
+
+<section class="section">
+
+    <h2>
+        🚀 Preparation Tips
+    </h2>
+
+
+    <ul class="tips">
+
+        <li>
+            Understand the complete syllabus
+            before starting preparation.
+        </li>
+
+        <li>
+            Create a realistic daily study
+            timetable.
+        </li>
+
+        <li>
+            Practice previous-year questions.
+        </li>
+
+        <li>
+            Take mock tests regularly.
+        </li>
+
+        <li>
+            Analyse mistakes after every test.
+        </li>
+
+        <li>
+            Revise important concepts
+            frequently.
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- IMPORTANT DATES -->
+
+<section class="section">
+
+    <h2>
+        📅 Important Dates
+    </h2>
+
+
+    <table class="details-table">
+
+        <tr>
+
+            <td>
+                Application Start
+            </td>
+
+            <td id="applicationStart">
+                Check official website
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Application Last Date
+            </td>
+
+            <td id="applicationEnd">
+                Check official website
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Examination
+            </td>
+
+            <td id="examDate">
+                Check current notification
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Result
+            </td>
+
+            <td id="resultDate">
+                Check official website
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+
+
+<!-- ACTION -->
+
+<div class="action-buttons">
+
+    <button
+    class="btn primary"
+    onclick="openOfficialWebsite()">
+
+        🌐 Official Website
+
+    </button>
+
+
+    <button
+    class="btn secondary"
+    onclick="saveExam()">
+
+        ❤️ Save Exam
+
+    </button>
+
+</div>
+
+
+
+<div class="footer">
+
+    EduPath AI © 2026
+
+</div>
+
+
+</main>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   EXAM DATABASE
+===================================================== */
+
+const exams = {
+
+
+    "JEE Main": {
+
+        icon:"⚙️",
+
+        fullName:
+        "Joint Entrance Examination (Main)",
+
+        level:
+        "National Level",
+
+        conductedBy:
+        "National Testing Agency (NTA)",
+
+        course:
+        "B.E / B.Tech",
+
+        mode:
+        "Computer Based Test",
+
+        frequency:
+        "Multiple Sessions",
+
+        about:
+        "JEE Main is a national-level entrance examination for admission to undergraduate engineering programs and other programs covered by the examination.",
+
+        eligibility:[
+            "Candidates should satisfy the qualifying examination requirements specified in the current year Information Bulletin.",
+            "For B.E./B.Tech., Physics and Mathematics are important subjects along with the required third subject.",
+            "Candidates should check institute-specific admission requirements.",
+            "Candidates must always verify the latest official notification before applying."
+        ],
+
+        subjects:[
+            "Mathematics",
+            "Physics",
+            "Chemistry"
+        ],
+
+        questionType:
+        "Multiple Choice and Numerical Value Questions",
+
+        duration:
+        "As specified in the current Information Bulletin",
+
+        marking:
+        "Refer to the current NTA Information Bulletin",
+
+        syllabus:[
+
+            {
+                title:"🔢 Mathematics",
+
+                text:
+                "Algebra, Calculus, Coordinate Geometry, Trigonometry, Probability and Statistics."
+            },
+
+            {
+                title:"⚡ Physics",
+
+                text:
+                "Mechanics, Electricity, Magnetism, Optics, Modern Physics and related topics."
+            },
+
+            {
+                title:"🧪 Chemistry",
+
+                text:
+                "Physical Chemistry, Organic Chemistry and Inorganic Chemistry."
+            }
+
+        ],
+
+        colleges:[
+            "IITs",
+            "NITs",
+            "IIITs",
+            "Other Participating Institutes"
+        ],
+
+        official:
+        "https://jeemain.nta.nic.in/"
+
+    },
+
+
+    "NEET UG": {
+
+        icon:"🩺",
+
+        fullName:
+        "National Eligibility cum Entrance Test (Undergraduate)",
+
+        level:
+        "National Level",
+
+        conductedBy:
+        "National Testing Agency (NTA)",
+
+        course:
+        "MBBS / BDS / AYUSH etc.",
+
+        mode:
+        "Pen and Paper",
+
+        frequency:
+        "Annual",
+
+        about:
+        "NEET UG is the common national entrance and eligibility examination used for undergraduate medical education and specified health-related courses in India.",
+
+        eligibility:[
+            "Candidates must satisfy the age and educational requirements specified in the current NEET Information Bulletin.",
+            "Candidates generally study Physics, Chemistry and Biology/Biotechnology in the qualifying examination.",
+            "Candidates must satisfy the admission requirements applicable to the course and institution.",
+            "Always check the latest official NTA bulletin before applying."
+        ],
+
+        subjects:[
+            "Physics",
+            "Chemistry",
+            "Biology"
+        ],
+
+        questionType:
+        "Multiple Choice Questions",
+
+        duration:
+        "As specified in the current NEET Information Bulletin",
+
+        marking:
+        "Refer to the current NEET Information Bulletin",
+
+        syllabus:[
+
+            {
+                title:"⚡ Physics",
+
+                text:
+                "Class 11 and Class 12 Physics topics prescribed in the NEET syllabus."
+            },
+
+            {
+                title:"🧪 Chemistry",
+
+                text:
+                "Physical, Organic and Inorganic Chemistry topics prescribed in the NEET syllabus."
+            },
+
+            {
+                title:"🧬 Biology",
+
+                text:
+                "Botany and Zoology topics based on the prescribed NEET syllabus."
+            }
+
+        ],
+
+        colleges:[
+            "Government Medical Colleges",
+            "Private Medical Colleges",
+            "Dental Colleges",
+            "AYUSH Institutions"
+        ],
+
+        official:
+        "https://neet.nta.nic.in/"
+
+    }
+
+};
+
+
+
+/* =====================================================
+   GET SELECTED EXAM
+===================================================== */
+
+const selectedExam =
+localStorage.getItem("selectedExam")
+||
+"JEE Main";
+
+
+/* =====================================================
+   LOAD EXAM
+===================================================== */
+
+function loadExam(){
+
+    const exam =
+    exams[selectedExam];
+
+
+    if(!exam){
+
+        document.getElementById(
+            "examName"
+        ).innerText =
+        selectedExam;
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "examIcon"
+    ).innerText =
+    exam.icon;
+
+
+    document.getElementById(
+        "examName"
+    ).innerText =
+    selectedExam;
+
+
+    document.getElementById(
+        "examFullName"
+    ).innerText =
+    exam.fullName;
+
+
+    document.getElementById(
+        "examLevel"
+    ).innerText =
+    exam.level;
+
+
+    document.getElementById(
+        "conductedBy"
+    ).innerText =
+    exam.conductedBy;
+
+
+    document.getElementById(
+        "course"
+    ).innerText =
+    exam.course;
+
+
+    document.getElementById(
+        "mode"
+    ).innerText =
+    exam.mode;
+
+
+    document.getElementById(
+        "frequency"
+    ).innerText =
+    exam.frequency;
+
+
+    document.getElementById(
+        "aboutExam"
+    ).innerText =
+    exam.about;
+
+
+    /* ELIGIBILITY */
+
+    const eligibility =
+    document.getElementById(
+        "eligibility"
+    );
+
+
+    eligibility.innerHTML = "";
+
+
+    exam.eligibility.forEach(
+        item => {
+
+            const li =
+            document.createElement("li");
+
+            li.innerText =
+            item;
+
+            eligibility.appendChild(li);
+
+        }
+    );
+
+
+    /* SUBJECTS */
+
+    const subjects =
+    document.getElementById(
+        "subjects"
+    );
+
+
+    subjects.innerHTML = "";
+
+
+    exam.subjects.forEach(
+        subject => {
+
+            const div =
+            document.createElement("div");
+
+            div.className =
+            "subject";
+
+            div.innerText =
+            subject;
+
+            subjects.appendChild(div);
+
+        }
+    );
+
+
+    /* PATTERN */
+
+    document.getElementById(
+        "patternSubjects"
+    ).innerText =
+    exam.subjects.join(", ");
+
+
+    document.getElementById(
+        "questionType"
+    ).innerText =
+    exam.questionType;
+
+
+    document.getElementById(
+        "duration"
+    ).innerText =
+    exam.duration;
+
+
+    document.getElementById(
+        "marking"
+    ).innerText =
+    exam.marking;
+
+
+    /* SYLLABUS */
+
+    const syllabus =
+    document.getElementById(
+        "syllabus"
+    );
+
+
+    syllabus.innerHTML = "";
+
+
+    exam.syllabus.forEach(
+        item => {
+
+            syllabus.innerHTML += `
+
+                <div class="syllabus-card">
+
+                    <h3>
+                        ${item.title}
+                    </h3>
+
+                    <p>
+                        ${item.text}
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    /* COLLEGES */
+
+    const colleges =
+    document.getElementById(
+        "colleges"
+    );
+
+
+    colleges.innerHTML = "";
+
+
+    exam.colleges.forEach(
+        college => {
+
+            colleges.innerHTML += `
+
+                <div class="college">
+                    ${college}
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   OFFICIAL WEBSITE
+===================================================== */
+
+function openOfficialWebsite(){
+
+    const exam =
+    exams[selectedExam];
+
+
+    if(exam){
+
+        window.open(
+            exam.official,
+            "_blank"
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SAVE EXAM
+===================================================== */
+
+function saveExam(){
+
+    let saved =
+    JSON.parse(
+        localStorage.getItem(
+            "savedExams"
+        )
+    ) || [];
+
+
+    if(
+        !saved.includes(
+            selectedExam
+        )
+    ){
+
+        saved.push(
+            selectedExam
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "savedExams",
+        JSON.stringify(saved)
+    );
+
+
+    alert(
+        selectedExam +
+        " saved successfully ❤️"
+    );
+
+}
+
+
+
+/* LOAD */
+
+loadExam();
+
+
+</script>
+
+
+</body>
+
+</html>

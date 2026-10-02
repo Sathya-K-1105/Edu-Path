@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Scholarships - EduPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="dashboard.html">🏠 Home</a>
+
+    <a href="what-to-study.html">📚 Study</a>
+
+    <a href="jobs.html">💼 Jobs</a>
+
+    <a href="videos.html">🎥 Videos</a>
+
+    <a href="higher-studies.html">🎓 Higher Studies</a>
+
+    <a href="colleges.html">🏫 Colleges</a>
+
+    <a href="scholarships.html">💰 Scholarships</a>
+
+    <a href="ai-assistant.html">🤖 AI</a>
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <h2>← Scholarships</h2>
+
+    <p>
+        Find scholarships and financial support
+        for your education.
+    </p>
+
+
+    <!-- SEARCH -->
+
+    <input
+        class="search"
+        id="scholarshipSearch"
+        type="text"
+        placeholder="🔍 Search scholarships..."
+        oninput="searchScholarships()"
+    >
+
+
+    <!-- FILTER -->
+
+    <div class="categories">
+
+        <button
+            class="category active"
+            onclick="filterScholarships('all', this)">
+            All
+        </button>
+
+        <button
+            class="category"
+            onclick="filterScholarships('government', this)">
+            Government
+        </button>
+
+        <button
+            class="category"
+            onclick="filterScholarships('private', this)">
+            Private
+        </button>
+
+        <button
+            class="category"
+            onclick="filterScholarships('merit', this)">
+            Merit
+        </button>
+
+    </div>
+
+
+
+    <!-- ================= SCHOLARSHIP GRID ================= -->
+
+    <div
+        class="scholarship-grid"
+        id="scholarshipList"
+    >
+
+
+        <!-- SCHOLARSHIP 1 -->
+
+        <div
+            class="scholarship-card"
+            data-category="government"
+            data-name="national scholarship portal">
+
+            <div class="scholarship-top">
+
+                <div class="scholarship-icon">
+                    🇮🇳
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveScholarship(
+                        'National Scholarship Portal'
+                    )">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                National Scholarship Portal
+            </h3>
+
+            <span class="scholarship-tag">
+                Government
+            </span>
+
+            <p>
+                Financial support for eligible
+                school and college students.
+            </p>
+
+            <div class="amount">
+                💰 Amount: Varies
+            </div>
+
+            <div class="eligibility">
+                ✅ Eligibility: Based on scheme
+            </div>
+
+            <button
+                class="apply-btn"
+                onclick="applyScholarship(
+                    'National Scholarship Portal'
+                )">
+
+                Apply Now →
+
+            </button>
+
+        </div>
+
+
+
+        <!-- SCHOLARSHIP 2 -->
+
+        <div
+            class="scholarship-card"
+            data-category="merit"
+            data-name="central sector scholarship">
+
+            <div class="scholarship-top">
+
+                <div class="scholarship-icon">
+                    🏆
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveScholarship(
+                        'Central Sector Scholarship'
+                    )">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                Central Sector Scholarship
+            </h3>
+
+            <span class="scholarship-tag">
+                Merit
+            </span>
+
+            <p>
+                Scholarship support for meritorious
+                students pursuing higher education.
+            </p>
+
+            <div class="amount">
+                💰 Amount: Up to ₹20,000/year
+            </div>
+
+            <div class="eligibility">
+                ✅ Eligibility: Merit based
+            </div>
+
+            <button
+                class="apply-btn"
+                onclick="applyScholarship(
+                    'Central Sector Scholarship'
+                )">
+
+                Apply Now →
+
+            </button>
+
+        </div>
+
+
+
+        <!-- SCHOLARSHIP 3 -->
+
+        <div
+            class="scholarship-card"
+            data-category="private"
+            data-name="tata scholarship">
+
+            <div class="scholarship-top">
+
+                <div class="scholarship-icon">
+                    🎓
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveScholarship(
+                        'Tata Scholarship'
+                    )">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                Tata Scholarship
+            </h3>
+
+            <span class="scholarship-tag">
+                Private
+            </span>
+
+            <p>
+                Educational financial assistance
+                for eligible students.
+            </p>
+
+            <div class="amount">
+                💰 Amount: Based on scheme
+            </div>
+
+            <div class="eligibility">
+                ✅ Eligibility: Scheme specific
+            </div>
+
+            <button
+                class="apply-btn"
+                onclick="applyScholarship(
+                    'Tata Scholarship'
+                )">
+
+                Apply Now →
+
+            </button>
+
+        </div>
+
+
+
+        <!-- SCHOLARSHIP 4 -->
+
+        <div
+            class="scholarship-card"
+            data-category="merit"
+            data-name="inspire scholarship">
+
+            <div class="scholarship-top">
+
+                <div class="scholarship-icon">
+                    🔬
+                </div>
+
+                <button
+                    class="heart-btn"
+                    onclick="saveScholarship(
+                        'INSPIRE Scholarship'
+                    )">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+            <h3>
+                INSPIRE Scholarship
+            </h3>
+
+            <span class="scholarship-tag">
+                Merit
+            </span>
+
+            <p>
+                Support for students interested
+                in science and research.
+            </p>
+
+            <div class="amount">
+                💰 Amount: As per scheme
+            </div>
+
+            <div class="eligibility">
+                ✅ Eligibility: Science & merit
+            </div>
+
+            <button
+                class="apply-btn"
+                onclick="applyScholarship(
+                    'INSPIRE Scholarship'
+                )">
+
+                Apply Now →
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================
+   FILTER
+========================= */
+
+function filterScholarships(category, button) {
+
+    let cards =
+        document.querySelectorAll(
+            ".scholarship-card"
+        );
+
+    let buttons =
+        document.querySelectorAll(
+            ".category"
+        );
+
+
+    buttons.forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    cards.forEach(function(card) {
+
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
+
+            card.style.display = "block";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchScholarships() {
+
+    let search =
+        document
+        .getElementById(
+            "scholarshipSearch"
+        )
+        .value
+        .toLowerCase();
+
+
+    let cards =
+        document.querySelectorAll(
+            ".scholarship-card"
+        );
+
+
+    cards.forEach(function(card) {
+
+        let name =
+            card.dataset.name;
+
+
+        if (name.includes(search)) {
+
+            card.style.display = "block";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================
+   SAVE
+========================= */
+
+function saveScholarship(scholarship) {
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem(
+                "savedScholarships"
+            )
+        ) || [];
+
+
+    if (!saved.includes(scholarship)) {
+
+        saved.push(scholarship);
+
+
+        localStorage.setItem(
+            "savedScholarships",
+            JSON.stringify(saved)
+        );
+
+
+        alert(
+            scholarship +
+            " saved successfully!"
+        );
+
+    }
+
+    else {
+
+        alert(
+            scholarship +
+            " is already saved."
+        );
+
+    }
+
+}
+
+
+
+/* =========================
+   APPLY
+========================= */
+
+function applyScholarship(scholarship) {
+
+    alert(
+        "Application page for " +
+        scholarship +
+        " will open here."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

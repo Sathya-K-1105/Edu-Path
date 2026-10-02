@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Eligibility Checker | EduPath AI</title>
+
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+
+        body{
+
+            font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+            background:#f7f7fc;
+
+            color:#24243f;
+
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        nav{
+
+            height:70px;
+
+            background:white;
+
+            border-bottom:
+            1px solid #e7e7ef;
+
+            display:flex;
+
+            align-items:center;
+
+            gap:8px;
+
+            padding:
+            0 25px;
+
+            position:sticky;
+
+            top:0;
+
+            z-index:100;
+
+            overflow-x:auto;
+
+        }
+
+
+        nav .logo{
+
+            font-size:20px;
+
+            font-weight:bold;
+
+            color:#5138d8;
+
+            margin-right:15px;
+
+            white-space:nowrap;
+
+        }
+
+
+        nav a{
+
+            text-decoration:none;
+
+            color:#444;
+
+            font-size:12px;
+
+            padding:
+            9px 11px;
+
+            border-radius:8px;
+
+            white-space:nowrap;
+
+        }
+
+
+        nav a:hover{
+
+            background:#eeeaff;
+
+            color:#5037d5;
+
+        }
+
+
+        nav a.active{
+
+            background:#eeeaff;
+
+            color:#5037d5;
+
+            font-weight:bold;
+
+        }
+
+
+        /* ================= MAIN ================= */
+
+        main{
+
+            min-height:
+            calc(100vh - 70px);
+
+            padding:
+            35px 20px;
+
+        }
+
+
+        .container{
+
+            max-width:900px;
+
+            margin:auto;
+
+        }
+
+
+        /* ================= BACK ================= */
+
+        .back{
+
+            display:inline-block;
+
+            margin-bottom:18px;
+
+            color:#5037d5;
+
+            text-decoration:none;
+
+            font-size:13px;
+
+            font-weight:bold;
+
+        }
+
+
+        .back:hover{
+
+            text-decoration:underline;
+
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .page-header{
+
+            background:
+            linear-gradient(
+                135deg,
+                #5a3ee0,
+                #8068ef
+            );
+
+            color:white;
+
+            padding:30px;
+
+            border-radius:18px;
+
+            margin-bottom:20px;
+
+        }
+
+
+        .page-header h1{
+
+            font-size:28px;
+
+            margin-bottom:8px;
+
+        }
+
+
+        .page-header p{
+
+            font-size:13px;
+
+            opacity:.9;
+
+            line-height:1.6;
+
+        }
+
+
+        /* ================= CARD ================= */
+
+        .card{
+
+            background:white;
+
+            border:
+            1px solid #e5e5ef;
+
+            border-radius:16px;
+
+            padding:25px;
+
+            margin-bottom:20px;
+
+            box-shadow:
+            0 5px 20px
+            rgba(0,0,0,.04);
+
+        }
+
+
+        .card h2{
+
+            font-size:19px;
+
+            margin-bottom:20px;
+
+            color:#292957;
+
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-grid{
+
+            display:grid;
+
+            grid-template-columns:
+            1fr 1fr;
+
+            gap:18px;
+
+        }
+
+
+        .form-group{
+
+            display:flex;
+
+            flex-direction:column;
+
+        }
+
+
+        .form-group.full{
+
+            grid-column:
+            1 / -1;
+
+        }
+
+
+        label{
+
+            font-size:12px;
+
+            font-weight:bold;
+
+            color:#555;
+
+            margin-bottom:7px;
+
+        }
+
+
+        input,
+        select{
+
+            width:100%;
+
+            height:45px;
+
+            border:
+            1px solid #ddd;
+
+            border-radius:9px;
+
+            padding:
+            0 13px;
+
+            outline:none;
+
+            font-size:13px;
+
+            background:white;
+
+        }
+
+
+        input:focus,
+        select:focus{
+
+            border-color:#674de2;
+
+            box-shadow:
+            0 0 0 3px
+            rgba(103,77,226,.1);
+
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .check-btn{
+
+            width:100%;
+
+            height:48px;
+
+            margin-top:22px;
+
+            border:none;
+
+            border-radius:9px;
+
+            background:
+            linear-gradient(
+                135deg,
+                #573bd9,
+                #755bea
+            );
+
+            color:white;
+
+            font-size:14px;
+
+            font-weight:bold;
+
+            cursor:pointer;
+
+            transition:.2s;
+
+        }
+
+
+        .check-btn:hover{
+
+            transform:
+            translateY(-2px);
+
+            box-shadow:
+            0 7px 18px
+            rgba(87,59,217,.25);
+
+        }
+
+
+        /* ================= RESULT ================= */
+
+        #result{
+
+            display:none;
+
+        }
+
+
+        .result-card{
+
+            border-radius:15px;
+
+            padding:25px;
+
+            text-align:center;
+
+        }
+
+
+        .eligible{
+
+            background:#ecfbf3;
+
+            border:
+            1px solid #bcefd1;
+
+        }
+
+
+        .not-eligible{
+
+            background:#fff0f0;
+
+            border:
+            1px solid #ffd0d0;
+
+        }
+
+
+        .result-icon{
+
+            width:65px;
+
+            height:65px;
+
+            margin:
+            0 auto 15px;
+
+            border-radius:50%;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            font-size:30px;
+
+        }
+
+
+        .eligible .result-icon{
+
+            background:#d6f6e4;
+
+        }
+
+
+        .not-eligible .result-icon{
+
+            background:#ffe0e0;
+
+        }
+
+
+        .result-card h2{
+
+            margin-bottom:8px;
+
+            font-size:21px;
+
+        }
+
+
+        .eligible h2{
+
+            color:#16864b;
+
+        }
+
+
+        .not-eligible h2{
+
+            color:#d33b3b;
+
+        }
+
+
+        .result-card p{
+
+            color:#555;
+
+            font-size:13px;
+
+            line-height:1.6;
+
+            margin:6px 0;
+
+        }
+
+
+        .result-details{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(3,1fr);
+
+            gap:10px;
+
+            margin-top:20px;
+
+        }
+
+
+        .result-detail{
+
+            background:white;
+
+            border:
+            1px solid #eee;
+
+            padding:12px;
+
+            border-radius:9px;
+
+        }
+
+
+        .result-detail span{
+
+            display:block;
+
+            color:#888;
+
+            font-size:10px;
+
+            margin-bottom:5px;
+
+        }
+
+
+        .result-detail b{
+
+            font-size:13px;
+
+        }
+
+
+        /* ================= RESULT BUTTON ================= */
+
+        .result-btn{
+
+            margin-top:20px;
+
+            border:none;
+
+            padding:
+            11px 18px;
+
+            border-radius:8px;
+
+            background:#5b3fe4;
+
+            color:white;
+
+            cursor:pointer;
+
+            font-size:12px;
+
+            font-weight:bold;
+
+        }
+
+
+        .result-btn:hover{
+
+            background:#472dc9;
+
+        }
+
+
+        .secondary-btn{
+
+            margin-left:7px;
+
+            background:#eeeaff;
+
+            color:#5037d5;
+
+        }
+
+
+        /* ================= INFO ================= */
+
+        .info-box{
+
+            background:#f4f1ff;
+
+            border:
+            1px solid #e1dbff;
+
+            border-radius:12px;
+
+            padding:18px;
+
+        }
+
+
+        .info-box h3{
+
+            color:#5037d5;
+
+            font-size:15px;
+
+            margin-bottom:10px;
+
+        }
+
+
+        .info-box p{
+
+            color:#555;
+
+            font-size:12px;
+
+            line-height:1.7;
+
+        }
+
+
+        .info-box ul{
+
+            padding-left:18px;
+
+            margin-top:10px;
+
+        }
+
+
+        .info-box li{
+
+            color:#555;
+
+            font-size:12px;
+
+            margin:7px 0;
+
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer{
+
+            text-align:center;
+
+            padding:25px;
+
+            color:#888;
+
+            font-size:11px;
+
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:700px){
+
+            nav{
+
+                padding:
+                0 12px;
+
+            }
+
+
+            nav .logo{
+
+                display:none;
+
+            }
+
+
+            main{
+
+                padding:
+                20px 12px;
+
+            }
+
+
+            .page-header{
+
+                padding:22px;
+
+            }
+
+
+            .page-header h1{
+
+                font-size:23px;
+
+            }
+
+
+            .form-grid{
+
+                grid-template-columns:1fr;
+
+            }
+
+
+            .form-group.full{
+
+                grid-column:auto;
+
+            }
+
+
+            .result-details{
+
+                grid-template-columns:1fr;
+
+            }
+
+
+            .secondary-btn{
+
+                margin-left:0;
+
+                margin-top:8px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+
+    <div class="logo">
+
+        🎓 EduPath AI
+
+    </div>
+
+
+    <a href="dashboard.html">
+
+        🏠 Home
+
+    </a>
+
+
+    <a href="what-to-study.html">
+
+        📚 Study
+
+    </a>
+
+
+    <a href="jobs.html">
+
+        💼 Jobs
+
+    </a>
+
+
+    <a href="videos.html">
+
+        🎥 Videos
+
+    </a>
+
+
+    <a href="higher-studies.html">
+
+        🎓 Higher Studies
+
+    </a>
+
+
+    <a href="colleges.html">
+
+        🏫 Colleges
+
+    </a>
+
+
+    <a href="scholarships.html">
+
+        💰 Scholarships
+
+    </a>
+
+
+    <a href="eligibility.html"
+       class="active">
+
+        ✅ Eligibility
+
+    </a>
+
+
+    <a href="exams.html">
+
+        📝 Exams
+
+    </a>
+
+
+    <a href="ai-assistant.html">
+
+        🤖 AI
+
+    </a>
+
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+
+<div class="container">
+
+
+    <!-- BACK -->
+
+    <a href="dashboard.html"
+       class="back">
+
+        ← Back to Dashboard
+
+    </a>
+
+
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+        <h1>
+
+            ✅ Eligibility Checker
+
+        </h1>
+
+
+        <p>
+
+            Enter your academic details and
+            discover which course options
+            you may be eligible for.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= FORM ================= -->
+
+    <div class="card">
+
+
+        <h2>
+
+            🎓 Enter Your Details
+
+        </h2>
+
+
+
+        <div class="form-grid">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Student Name
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+
+            <!-- AGE -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Age
+
+                </label>
+
+
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Example: 18"
+                    min="1"
+                    max="100"
+                >
+
+            </div>
+
+
+
+            <!-- PERCENTAGE -->
+
+            <div class="form-group">
+
+                <label>
+
+                    12th Percentage
+
+                </label>
+
+
+                <input
+                    type="number"
+                    id="percentage"
+                    placeholder="Example: 85"
+                    min="0"
+                    max="100"
+                    step="0.01"
+                >
+
+            </div>
+
+
+
+            <!-- STREAM -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Your Stream
+
+                </label>
+
+
+                <select id="stream">
+
+                    <option value="">
+
+                        Select Stream
+
+                    </option>
+
+
+                    <option value="science">
+
+                        Science
+
+                    </option>
+
+
+                    <option value="commerce">
+
+                        Commerce
+
+                    </option>
+
+
+                    <option value="arts">
+
+                        Arts / Humanities
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- COURSE -->
+
+            <div class="form-group full">
+
+                <label>
+
+                    Select Course / Career Area
+
+                </label>
+
+
+                <select id="course">
+
+                    <option value="">
+
+                        Select Course
+
+                    </option>
+
+
+                    <option value="engineering">
+
+                        ⚙️ Engineering
+
+                    </option>
+
+
+                    <option value="medical">
+
+                        🩺 Medical
+
+                    </option>
+
+
+                    <option value="management">
+
+                        💼 Management
+
+                    </option>
+
+
+                    <option value="law">
+
+                        ⚖️ Law
+
+                    </option>
+
+
+                    <option value="computer">
+
+                        💻 Computer Science
+
+                    </option>
+
+
+                    <option value="design">
+
+                        🎨 Design
+
+                    </option>
+
+
+                    <option value="agriculture">
+
+                        🌱 Agriculture
+
+                    </option>
+
+
+                    <option value="arts">
+
+                        📚 Arts & Humanities
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CHECK -->
+
+        <button
+            class="check-btn"
+            onclick="checkEligibility()">
+
+            🔍 Check My Eligibility
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- ================= RESULT ================= -->
+
+    <div
+        id="result"
+        class="card"
+    >
+
+    </div>
+
+
+
+    <!-- ================= INFORMATION ================= -->
+
+    <div class="card">
+
+        <div class="info-box">
+
+            <h3>
+
+                💡 Important Note
+
+            </h3>
+
+
+            <p>
+
+                This eligibility checker provides
+                a basic guidance result for your
+                selected course. Actual admission
+                eligibility can vary depending on
+                the university, college, entrance
+                examination, category and current
+                admission rules.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Check the official notification
+                    before applying.
+                </li>
+
+                <li>
+                    Entrance exam eligibility may
+                    have additional requirements.
+                </li>
+
+                <li>
+                    College-specific eligibility
+                    rules may differ.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    EduPath AI © 2026
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+function checkEligibility(){
+
+
+    /* ================= GET VALUES ================= */
+
+
+    const name =
+        document
+        .getElementById("studentName")
+        .value
+        .trim();
+
+
+    const percentage =
+        Number(
+            document
+            .getElementById("percentage")
+            .value
+        );
+
+
+    const age =
+        Number(
+            document
+            .getElementById("age")
+            .value
+        );
+
+
+    const stream =
+        document
+        .getElementById("stream")
+        .value;
+
+
+    const course =
+        document
+        .getElementById("course")
+        .value;
+
+
+    const result =
+        document
+        .getElementById("result");
+
+
+
+    /* ================= VALIDATION ================= */
+
+
+    if(
+
+        name === "" ||
+
+        percentage < 0 ||
+
+        percentage > 100 ||
+
+        age <= 0 ||
+
+        stream === "" ||
+
+        course === ""
+
+    ){
+
+        result.style.display =
+            "block";
+
+
+        result.innerHTML = `
+
+            <div class="result-card not-eligible">
+
+                <div class="result-icon">
+
+                    ⚠️
+
+                </div>
+
+
+                <h2>
+
+                    Please Fill All Details
+
+                </h2>
+
+
+                <p>
+
+                    Enter your name, age,
+                    percentage, stream and
+                    course before checking
+                    eligibility.
+
+                </p>
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    /* ================= VARIABLES ================= */
+
+
+    let eligible = false;
+
+    let message = "";
+
+    let requirement = "";
+
+
+
+    /* ================= ENGINEERING ================= */
+
+
+    if(course === "engineering"){
+
+        if(
+
+            stream === "science" &&
+
+            percentage >= 50 &&
+
+            age >= 16
+
+        ){
+
+            eligible = true;
+
+            message =
+                "You meet the basic eligibility criteria for Engineering.";
+
+            requirement =
+                "Science stream + 50% or above";
+
+        }
+
+        else{
+
+            message =
+                "Engineering generally requires the relevant science subjects and institution-specific qualifying marks.";
+
+            requirement =
+                "Science stream + required qualifying marks";
+
+        }
+
+    }
+
+
+
+    /* ================= MEDICAL ================= */
+
+
+    else if(course === "medical"){
+
+        if(
+
+            stream === "science" &&
+
+            percentage >= 50 &&
+
+            age >= 17
+
+        ){
+
+            eligible = true;
+
+            message =
+                "You meet the basic demo eligibility criteria for Medical courses.";
+
+            requirement =
+                "Science stream + 50% or above";
+
+        }
+
+        else{
+
+            message =
+                "Medical courses generally require the prescribed Physics, Chemistry and Biology/Biotechnology subjects and applicable entrance requirements.";
+
+            requirement =
+                "Science + PCB + required criteria";
+
+        }
+
+    }
+
+
+
+    /* ================= MANAGEMENT ================= */
+
+
+    else if(course === "management"){
+
+        if(
+
+            percentage >= 45 &&
+
+            age >= 17
+
+        ){
+
+            eligible = true;
+
+            message =
+                "You meet the basic demo eligibility criteria for Management courses.";
+
+            requirement =
+                "45% or above";
+
+        }
+
+        else{
+
+            message =
+                "Your current details do not meet the basic demo requirement for this option.";
+
+            requirement =
+                "45% or above";
+
+        }
+
+    }
+
+
+
+    /* ================= LAW ================= */
+
+
+    else if(course === "law"){
+
+        if(
+
+            percentage >= 45 &&
+
+            age >= 16
+
+        ){
+
+            eligible = true;
+
+            message =
+                "You meet the basic demo eligibility criteria for Law courses.";
+
+            requirement =
+                "Required qualifying marks";
+
+        }
+
+        else{
+
+            message =
+                "Law admission requirements vary by programme and institution.";
+
+            requirement =
+                "Check current university / entrance rules";
+
+        }
+
+    }
+
+
+
+    /* ================= COMPUTER SCIENCE ================= */
+
+
+    else if(course === "computer"){
+
+        if(
+
+            stream === "science" &&
+
+            percentage >= 50
+
+        ){
+
+            eligible = true;
+
+            message =
+                "You meet the basic demo eligibility criteria for Computer Science related courses.";
+
+            requirement =
+                "Science stream + 50% or above";
+
+        }
+
+        else{
+
+            message =
+                "Many Computer Science programmes require Mathematics and institution-specific qualifying subjects.";
+
+            requirement =
+                "Relevant subjects + required marks";
+
+        }
+
+    }
+
+
+
+    /* ================= DESIGN ================= */
+
+
+    else if(course === "design"){
+
+        if(
+
+            percentage >= 45 &&
+
+            age >= 16
+
+        ){
+
+            eligible = true;
+
+            message =
+                "You meet the basic demo eligibility criteria for Design courses.";
+
+            requirement =
+                "45% or above";
+
+        }
+
+        else{
+
+            message =
+                "Design course eligibility varies depending on the institute and entrance examination.";
+
+            requirement =
+                "Check institute requirements";
+
+        }
+
+    }
+
+
+
+    /* ================= AGRICULTURE ================= */
+
+
+    else if(course === "agriculture"){
+
+        if(
+
+            stream === "science" &&
+
+            percentage >= 50
+
+        ){
+
+            eligible = true;
+
+            message =
+                "You meet the basic demo eligibility criteria for Agriculture related courses.";
+
+            requirement =
+                "Science stream + 50% or above";
+
+        }
+
+        else{
+
+            message =
+                "Agriculture programmes may require specific science subjects and admission criteria.";
+
+            requirement =
+                "Relevant science subjects";
+
+        }
+
+    }
+
+
+
+    /* ================= ARTS ================= */
+
+
+    else if(course === "arts"){
+
+        if(
+
+            percentage >= 40 &&
+
+            age >= 16
+
+        ){
+
+            eligible = true;
+
+            message =
+                "You meet the basic demo eligibility criteria for Arts & Humanities.";
+
+            requirement =
+                "40% or above";
+
+        }
+
+        else{
+
+            message =
+                "Your current details do not meet the basic demo requirement.";
+
+            requirement =
+                "40% or above";
+
+        }
+
+    }
+
+
+
+    /* ================= SHOW RESULT ================= */
+
+
+    result.style.display =
+        "block";
+
+
+    if(eligible){
+
+        result.innerHTML = `
+
+            <div class="result-card eligible">
+
+
+                <div class="result-icon">
+
+                    ✅
+
+                </div>
+
+
+                <h2>
+
+                    Congratulations ${escapeHTML(name)}!
+
+                </h2>
+
+
+                <p>
+
+                    ${message}
+
+                </p>
+
+
+                <div class="result-details">
+
+
+                    <div class="result-detail">
+
+                        <span>
+                            Percentage
+                        </span>
+
+                        <b>
+                            ${percentage}%
+                        </b>
+
+                    </div>
+
+
+                    <div class="result-detail">
+
+                        <span>
+                            Age
+                        </span>
+
+                        <b>
+                            ${age}
+                        </b>
+
+                    </div>
+
+
+                    <div class="result-detail">
+
+                        <span>
+                            Requirement
+                        </span>
+
+                        <b>
+                            ${requirement}
+                        </b>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="result-btn"
+                    onclick="goToCourses()">
+
+                    📚 Explore Courses →
+
+                </button>
+
+
+                <button
+                    class="result-btn secondary-btn"
+                    onclick="goToExams()">
+
+                    📝 View Entrance Exams
+
+                </button>
+
+
+            </div>
+
+        `;
+
+    }
+
+    else{
+
+        result.innerHTML = `
+
+            <div class="result-card not-eligible">
+
+
+                <div class="result-icon">
+
+                    ❌
+
+                </div>
+
+
+                <h2>
+
+                    Not Eligible Based on Basic Check
+
+                </h2>
+
+
+                <p>
+
+                    ${message}
+
+                </p>
+
+
+                <div class="result-details">
+
+
+                    <div class="result-detail">
+
+                        <span>
+                            Your Percentage
+                        </span>
+
+                        <b>
+                            ${percentage}%
+                        </b>
+
+                    </div>
+
+
+                    <div class="result-detail">
+
+                        <span>
+                            Your Age
+                        </span>
+
+                        <b>
+                            ${age}
+                        </b>
+
+                    </div>
+
+
+                    <div class="result-detail">
+
+                        <span>
+                            Requirement
+                        </span>
+
+                        <b>
+                            ${requirement}
+                        </b>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="result-btn"
+                    onclick="goToCourses()">
+
+                    🔎 Explore Other Courses
+
+                </button>
+
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* Scroll to result */
+
+    result.scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"start"
+
+    });
+
+}
+
+
+
+/* ================= NAVIGATION ================= */
+
+
+function goToCourses(){
+
+    window.location.href =
+        "what-to-study.html";
+
+}
+
+
+function goToExams(){
+
+    window.location.href =
+        "exams.html";
+
+}
+
+
+
+/* ================= SECURITY ================= */
+
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+</script>
+
+
+</body>
+
+</html>

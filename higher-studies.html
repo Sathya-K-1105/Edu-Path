@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Higher Studies - EduPath AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="dashboard.html">🏠 Home</a>
+    <a href="what-to-study.html">📚 Study</a>
+    <a href="jobs.html">💼 Jobs</a>
+    <a href="videos.html">🎥 Videos</a>
+    <a href="higher-studies.html">🎓 Higher Studies</a>
+    <a href="colleges.html">🏫 Colleges</a>
+    <a href="scholarships.html">💰 Scholarships</a>
+    <a href="ai-assistant.html">🤖 AI</a>
+
+</nav>
+
+
+<main>
+
+    <h2>← Higher Studies</h2>
+
+    <p>
+        Explore higher education options and choose
+        the right path for your career.
+    </p>
+
+
+    <!-- SEARCH -->
+
+    <input
+        class="search"
+        id="studySearch"
+        type="text"
+        placeholder="🔍 Search higher studies..."
+        oninput="searchStudies()"
+    >
+
+
+    <!-- STUDY CARDS -->
+
+    <div class="higher-grid">
+
+
+        <!-- M.Tech -->
+
+        <div
+            class="higher-card"
+            data-name="mtech masters engineering">
+
+            <div class="higher-icon">
+                🎓
+            </div>
+
+            <h3>
+                M.Tech
+            </h3>
+
+            <p>
+                Master of Technology
+            </p>
+
+            <p>
+                Best for engineering students
+                who want advanced technical knowledge.
+            </p>
+
+            <ul>
+                <li>Duration: 2 Years</li>
+                <li>Focus: Technology & Research</li>
+                <li>Entrance: GATE</li>
+            </ul>
+
+            <a
+                class="study-btn"
+                href="exams.html">
+
+                Explore M.Tech →
+
+            </a>
+
+        </div>
+
+
+
+        <!-- MBA -->
+
+        <div
+            class="higher-card"
+            data-name="mba business management">
+
+            <div class="higher-icon">
+                💼
+            </div>
+
+            <h3>
+                MBA
+            </h3>
+
+            <p>
+                Master of Business Administration
+            </p>
+
+            <p>
+                Best for students interested in
+                business, management and leadership.
+            </p>
+
+            <ul>
+                <li>Duration: 2 Years</li>
+                <li>Focus: Business & Management</li>
+                <li>Entrance: CAT / MAT</li>
+            </ul>
+
+            <a
+                class="study-btn"
+                href="exams.html">
+
+                Explore MBA →
+
+            </a>
+
+        </div>
+
+
+
+        <!-- MS ABROAD -->
+
+        <div
+            class="higher-card"
+            data-name="ms abroad foreign study">
+
+            <div class="higher-icon">
+                🌎
+            </div>
+
+            <h3>
+                MS Abroad
+            </h3>
+
+            <p>
+                Master of Science
+            </p>
+
+            <p>
+                Study advanced specializations
+                at universities around the world.
+            </p>
+
+            <ul>
+                <li>Duration: 1–2 Years</li>
+                <li>Countries: USA, UK, Canada</li>
+                <li>Tests: IELTS / TOEFL / GRE</li>
+            </ul>
+
+            <a
+                class="study-btn"
+                href="colleges.html">
+
+                Explore MS →
+
+            </a>
+
+        </div>
+
+
+
+        <!-- PhD -->
+
+        <div
+            class="higher-card"
+            data-name="phd research doctorate">
+
+            <div class="higher-icon">
+                🔬
+            </div>
+
+            <h3>
+                PhD
+            </h3>
+
+            <p>
+                Doctor of Philosophy
+            </p>
+
+            <p>
+                Best for students interested in
+                research, innovation and academics.
+            </p>
+
+            <ul>
+                <li>Duration: 3–6 Years</li>
+                <li>Focus: Research</li>
+                <li>Career: Researcher / Professor</li>
+            </ul>
+
+            <a
+                class="study-btn"
+                href="what-to-study.html">
+
+                Explore PhD →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* =========================
+   SEARCH HIGHER STUDIES
+========================= */
+
+function searchStudies() {
+
+    let search =
+        document
+        .getElementById("studySearch")
+        .value
+        .toLowerCase();
+
+
+    let cards =
+        document.querySelectorAll(".higher-card");
+
+
+    cards.forEach(function(card) {
+
+        let name =
+            card.dataset.name;
+
+
+        if (name.includes(search)) {
+
+            card.style.display = "block";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>

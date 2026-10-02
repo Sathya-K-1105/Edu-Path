@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Job Details & Salary - EduPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="dashboard.html">🏠 Home</a>
+
+    <a href="what-to-study.html">📚 Study</a>
+
+    <a href="jobs.html">💼 Jobs</a>
+
+    <a href="videos.html">🎥 Videos</a>
+
+    <a href="higher-studies.html">🎓 Higher Studies</a>
+
+    <a href="colleges.html">🏫 Colleges</a>
+
+    <a href="scholarships.html">💰 Scholarships</a>
+
+    <a href="ai-assistant.html">🤖 AI</a>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <h2>← Job Details & Salary</h2>
+
+    <p>
+        Explore careers, salaries and job demand.
+    </p>
+
+
+    <!-- SEARCH -->
+
+    <input
+        class="search"
+        id="jobSearch"
+        type="text"
+        placeholder="🔍 Search jobs..."
+        oninput="searchJobs()"
+    >
+
+
+    <!-- FILTER BUTTONS -->
+
+    <div class="categories">
+
+        <button
+            class="category active"
+            onclick="filterJobs('all', this)">
+            All Jobs
+        </button>
+
+        <button
+            class="category"
+            onclick="filterJobs('high', this)">
+            High Salary
+        </button>
+
+        <button
+            class="category"
+            onclick="filterJobs('trending', this)">
+            Trending
+        </button>
+
+    </div>
+
+
+    <!-- ================= JOB LIST ================= -->
+
+    <div class="job-list" id="jobList">
+
+
+        <!-- SOFTWARE ENGINEER -->
+
+        <div
+            class="job-card"
+            data-category="high"
+            data-name="software engineer">
+
+            <div class="job-icon">
+                💻
+            </div>
+
+            <div class="job-info">
+
+                <h3>
+                    Software Engineer
+                </h3>
+
+                <p>
+                    💰 ₹6 - 15 LPA
+                </p>
+
+                <span class="demand">
+                    High Demand
+                </span>
+
+            </div>
+
+            <button
+                class="save-btn"
+                onclick="saveJob('Software Engineer')">
+
+                ♡
+
+            </button>
+
+        </div>
+
+
+
+        <!-- DATA SCIENTIST -->
+
+        <div
+            class="job-card"
+            data-category="high"
+            data-name="data scientist">
+
+            <div class="job-icon">
+                📊
+            </div>
+
+            <div class="job-info">
+
+                <h3>
+                    Data Scientist
+                </h3>
+
+                <p>
+                    💰 ₹8 - 20 LPA
+                </p>
+
+                <span class="demand">
+                    High Demand
+                </span>
+
+            </div>
+
+            <button
+                class="save-btn"
+                onclick="saveJob('Data Scientist')">
+
+                ♡
+
+            </button>
+
+        </div>
+
+
+
+        <!-- DOCTOR -->
+
+        <div
+            class="job-card"
+            data-category="trending"
+            data-name="doctor">
+
+            <div class="job-icon">
+                🩺
+            </div>
+
+            <div class="job-info">
+
+                <h3>
+                    Doctor</h3>
+
+                <p>
+                    💰 ₹10 - 30 LPA
+                </p>
+
+                <span class="demand">
+                    High Demand
+                </span>
+
+            </div>
+
+            <button
+                class="save-btn"
+                onclick="saveJob('Doctor')">
+
+                ♡
+
+            </button>
+
+        </div>
+
+
+
+        <!-- CHARTERED ACCOUNTANT -->
+
+        <div
+            class="job-card"
+            data-category="high"
+            data-name="chartered accountant">
+
+            <div class="job-icon">
+                📒
+            </div>
+
+            <div class="job-info">
+
+                <h3>
+                    Chartered Accountant
+                </h3>
+
+                <p>
+                    💰 ₹6 - 12 LPA
+                </p>
+
+                <span class="demand">
+                    High Demand
+                </span>
+
+            </div>
+
+            <button
+                class="save-btn"
+                onclick="saveJob('Chartered Accountant')">
+
+                ♡
+
+            </button>
+
+        </div>
+
+
+
+        <!-- PRODUCT MANAGER -->
+
+        <div
+            class="job-card"
+            data-category="trending"
+            data-name="product manager">
+
+            <div class="job-icon">
+                📱
+            </div>
+
+            <div class="job-info">
+
+                <h3>
+                    Product Manager
+                </h3>
+
+                <p>
+                    💰 ₹10 - 25 LPA
+                </p>
+
+                <span class="demand">
+                    High Demand
+                </span>
+
+            </div>
+
+            <button
+                class="save-btn"
+                onclick="saveJob('Product Manager')">
+
+                ♡
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* FILTER JOBS */
+
+function filterJobs(category, button) {
+
+    let cards =
+        document.querySelectorAll(".job-card");
+
+    let buttons =
+        document.querySelectorAll(".category");
+
+
+    buttons.forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    cards.forEach(function(card) {
+
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
+
+            card.style.display = "flex";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* SEARCH JOBS */
+
+function searchJobs() {
+
+    let search =
+        document
+        .getElementById("jobSearch")
+        .value
+        .toLowerCase();
+
+
+    let cards =
+        document.querySelectorAll(".job-card");
+
+
+    cards.forEach(function(card) {
+
+        let name =
+            card.dataset.name;
+
+
+        if (name.includes(search)) {
+
+            card.style.display = "flex";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* SAVE JOB */
+
+function saveJob(job) {
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem("savedJobs")
+        ) || [];
+
+
+    if (!saved.includes(job)) {
+
+        saved.push(job);
+
+        localStorage.setItem(
+            "savedJobs",
+            JSON.stringify(saved)
+        );
+
+        alert(
+            job +
+            " saved successfully!"
+        );
+
+    }
+
+    else {
+
+        alert(
+            job +
+            " is already saved."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Career Assistant - EduPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="dashboard.html">🏠 Home</a>
+
+    <a href="what-to-study.html">📚 Study</a>
+
+    <a href="jobs.html">💼 Jobs</a>
+
+    <a href="videos.html">🎥 Videos</a>
+
+    <a href="higher-studies.html">🎓 Higher Studies</a>
+
+    <a href="colleges.html">🏫 Colleges</a>
+
+    <a href="scholarships.html">💰 Scholarships</a>
+
+    <a href="eligibility.html">✅ Eligibility</a>
+
+    <a href="exams.html">📝 Exams</a>
+
+    <a href="ai-assistant.html">🤖 AI</a>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="ai-container">
+
+        <h2>🤖 AI Career Assistant</h2>
+
+        <p>
+            Tell us about your interests and goals.
+            Our AI assistant will suggest a suitable career path.
+        </p>
+
+
+        <!-- ================= AI BOX ================= -->
+
+        <div class="ai-box">
+
+            <h3>
+                💬 What are you interested in?
+            </h3>
+
+            <textarea
+                id="userInput"
+                placeholder="Example: I like coding and technology..."
+            ></textarea>
+
+
+            <!-- QUICK OPTIONS -->
+
+            <div class="quick-options">
+
+                <button onclick="setInterest('coding')">
+                    💻 I like Coding
+                </button>
+
+                <button onclick="setInterest('biology')">
+                    🧬 I like Biology
+                </button>
+
+                <button onclick="setInterest('business')">
+                    💼 I like Business
+                </button>
+
+                <button onclick="setInterest('design')">
+                    🎨 I like Design
+                </button>
+
+                <button onclick="setInterest('research')">
+                    🔬 I like Research
+                </button>
+
+            </div>
+
+
+            <button
+                class="ai-btn"
+                onclick="getRecommendation()">
+
+                ✨ Get Career Recommendation
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= RESULT ================= -->
+
+        <div
+            id="aiResult"
+            class="ai-result">
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================
+   QUICK INTEREST
+========================= */
+
+function setInterest(type) {
+
+    let input =
+        document.getElementById("userInput");
+
+
+    if (type === "coding") {
+
+        input.value =
+            "I like coding, computers and technology.";
+
+    }
+
+
+    else if (type === "biology") {
+
+        input.value =
+            "I like biology, healthcare and helping people.";
+
+    }
+
+
+    else if (type === "business") {
+
+        input.value =
+            "I like business, management and finance.";
+
+    }
+
+
+    else if (type === "design") {
+
+        input.value =
+            "I like design, creativity and user interfaces.";
+
+    }
+
+
+    else if (type === "research") {
+
+        input.value =
+            "I like research, science and innovation.";
+
+    }
+
+}
+
+
+
+/* =========================
+   AI RECOMMENDATION
+========================= */
+
+function getRecommendation() {
+
+
+    let input =
+        document
+        .getElementById("userInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    let result =
+        document.getElementById("aiResult");
+
+
+    /* EMPTY CHECK */
+
+    if (input === "") {
+
+        result.innerHTML = `
+
+            <div class="ai-error">
+
+                ⚠️ Please tell me about
+                your interests first.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    /* =========================
+       CODING
+    ========================= */
+
+    if (
+        input.includes("coding") ||
+        input.includes("programming") ||
+        input.includes("computer") ||
+        input.includes("technology") ||
+        input.includes("software") ||
+        input.includes("javascript") ||
+        input.includes("python")
+    ) {
+
+        showResult(
+            "💻",
+            "Technology & Software",
+            "Software Engineer",
+            "B.Tech CSE / IT",
+            "JavaScript, Python, Java, DSA, Git & SQL",
+            "Software Developer, Web Developer, Full Stack Developer",
+            "High"
+        );
+
+    }
+
+
+
+    /* =========================
+       BIOLOGY
+    ========================= */
+
+    else if (
+        input.includes("biology") ||
+        input.includes("medical") ||
+        input.includes("health") ||
+        input.includes("doctor") ||
+        input.includes("medicine")
+    ) {
+
+        showResult(
+            "🩺",
+            "Healthcare & Medicine",
+            "Doctor / Healthcare Professional",
+            "MBBS / B.Sc / Allied Health Sciences",
+            "Biology, Communication, Clinical Knowledge",
+            "Doctor, Medical Researcher, Healthcare Professional",
+            "High"
+        );
+
+    }
+
+
+
+    /* =========================
+       BUSINESS
+    ========================= */
+
+    else if (
+        input.includes("business") ||
+        input.includes("management") ||
+        input.includes("finance") ||
+        input.includes("marketing") ||
+        input.includes("commerce")
+    ) {
+
+        showResult(
+            "💼",
+            "Business & Management",
+            "Business / Management Professional",
+            "BBA / B.Com → MBA",
+            "Communication, Finance, Marketing, Leadership",
+            "Business Analyst, Manager, Financial Analyst",
+            "High"
+        );
+
+    }
+
+
+
+    /* =========================
+       DESIGN
+    ========================= */
+
+    else if (
+        input.includes("design") ||
+        input.includes("creative") ||
+        input.includes("ui") ||
+        input.includes("ux") ||
+        input.includes("art")
+    ) {
+
+        showResult(
+            "🎨",
+            "Design & Creativity",
+            "UI/UX Designer",
+            "B.Des / Design-related Degree",
+            "Figma, UI Design, UX Research, Creativity",
+            "UI Designer, UX Designer, Product Designer",
+            "Growing"
+        );
+
+    }
+
+
+
+    /* =========================
+       RESEARCH
+    ========================= */
+
+    else if (
+        input.includes("research") ||
+        input.includes("science") ||
+        input.includes("innovation") ||
+        input.includes("experiment")
+    ) {
+
+        showResult(
+            "🔬",
+            "Science & Research",
+            "Research Scientist",
+            "B.Sc → M.Sc → PhD",
+            "Research Methods, Mathematics, Programming",
+            "Research Scientist, Professor, R&D Professional",
+            "Growing"
+        );
+
+    }
+
+
+
+    /* =========================
+       DEFAULT
+    ========================= */
+
+    else {
+
+        showResult(
+            "🎯",
+            "General Career Exploration",
+            "Explore Multiple Career Paths",
+            "Choose a degree based on your interests",
+            "Communication, Problem Solving, Digital Skills",
+            "Technology, Business, Design, Research",
+            "Varies"
+        );
+
+    }
+
+}
+
+
+
+/* =========================
+   DISPLAY RESULT
+========================= */
+
+function showResult(
+    icon,
+    field,
+    career,
+    course,
+    skills,
+    jobs,
+    demand
+) {
+
+
+    let result =
+        document.getElementById("aiResult");
+
+
+    result.innerHTML = `
+
+        <div class="ai-success">
+
+            <div class="ai-result-icon">
+                ${icon}
+            </div>
+
+            <h2>
+                Recommended Career Path
+            </h2>
+
+            <p class="ai-field">
+                ${field}
+            </p>
+
+
+            <div class="recommendation-grid">
+
+
+                <div class="recommendation-item">
+
+                    <span>🎯 Career</span>
+
+                    <b>
+                        ${career}
+                    </b>
+
+                </div>
+
+
+                <div class="recommendation-item">
+
+                    <span>🎓 Suggested Course</span>
+
+                    <b>
+                        ${course}
+                    </b>
+
+                </div>
+
+
+                <div class="recommendation-item">
+
+                    <span>🛠️ Skills to Learn</span>
+
+                    <b>
+                        ${skills}
+                    </b>
+
+                </div>
+
+
+                <div class="recommendation-item">
+
+                    <span>💼 Job Opportunities</span>
+
+                    <b>
+                        ${jobs}
+                    </b>
+
+                </div>
+
+
+                <div class="recommendation-item">
+
+                    <span>📈 Demand</span>
+
+                    <b>
+                        ${demand}
+                    </b>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="ai-actions">
+
+                <a
+                    href="what-to-study.html"
+                    class="result-btn">
+
+                    📚 Explore Courses
+
+                </a>
+
+
+                <a
+                    href="jobs.html"
+                    class="result-btn">
+
+                    💼 Explore Jobs
+
+                </a>
+
+
+                <a
+                    href="colleges.html"
+                    class="result-btn">
+
+                    🏫 Find Colleges
+
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+
+</body>
+
+</html>

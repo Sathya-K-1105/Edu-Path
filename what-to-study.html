@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>What to Study | EduPath AI</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f8ff;
+            color: #202040;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .header {
+            height: 70px;
+            background: white;
+            border-bottom: 1px solid #e8e8ef;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 30px;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .logo-icon {
+            font-size: 32px;
+        }
+
+
+        .logo h2 {
+            color: #3726c9;
+            font-size: 20px;
+        }
+
+
+        .logo p {
+            font-size: 10px;
+            color: #777;
+        }
+
+
+        .header-search {
+            width: 390px;
+            height: 42px;
+
+            border: 1px solid #ddd;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 14px;
+        }
+
+
+        .header-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px;
+        }
+
+
+        .header-search button {
+            width: 45px;
+            height: 42px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: #5b3fe4;
+            color: white;
+
+            cursor: pointer;
+        }
+
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .profile-icon {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            background: #eeeaff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #5037d5;
+            font-weight: bold;
+        }
+
+
+        .profile small {
+            display: block;
+            color: #777;
+            font-size: 11px;
+        }
+
+
+
+        /* ================= LAYOUT ================= */
+
+        .layout {
+            display: grid;
+
+            grid-template-columns:
+                210px 1fr 280px;
+
+            min-height: calc(100vh - 70px);
+        }
+
+
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            background: white;
+
+            border-right: 1px solid #eee;
+
+            padding: 20px 12px;
+        }
+
+
+        .sidebar-title {
+            color: #5037d5;
+            font-size: 20px;
+            font-weight: bold;
+
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+
+        .sidebar a {
+            display: block;
+
+            text-decoration: none;
+
+            color: #333;
+
+            padding: 12px;
+
+            margin: 4px 0;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+        }
+
+
+        .sidebar a:hover {
+            background: #f1efff;
+            color: #5037d5;
+        }
+
+
+        .sidebar a.active {
+            background: #eeeaff;
+            color: #5037d5;
+            font-weight: bold;
+        }
+
+
+        .logout {
+            margin-top: 20px !important;
+            color: #e03b4b !important;
+        }
+
+
+
+        /* ================= MAIN ================= */
+
+        .main {
+            padding: 30px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+
+        .title h1 {
+            font-size: 28px;
+            color: #18182f;
+        }
+
+
+        .title p {
+            margin-top: 7px;
+            color: #707070;
+            font-size: 14px;
+        }
+
+
+
+        /* ================= LOCATION ================= */
+
+        .location-box {
+            background: white;
+
+            border: 1px solid #e5e5ef;
+
+            border-radius: 15px;
+
+            padding: 22px;
+
+            margin-top: 25px;
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.03);
+        }
+
+
+        .location-box h2 {
+            font-size: 19px;
+            color: #252552;
+        }
+
+
+        .location-box > p {
+            color: #777;
+            font-size: 13px;
+            margin-top: 6px;
+            margin-bottom: 18px;
+        }
+
+
+        .location-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .select-group label {
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            color: #444;
+
+            margin-bottom: 7px;
+        }
+
+
+        .select-group select {
+            width: 100%;
+
+            height: 43px;
+
+            padding: 0 12px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 9px;
+
+            background: white;
+
+            outline: none;
+
+            cursor: pointer;
+        }
+
+
+        .select-group select:focus {
+            border-color: #5b3fe4;
+        }
+
+
+        .select-group select:disabled {
+            background: #f5f5f7;
+            cursor: not-allowed;
+        }
+
+
+
+        /* ================= LOCATION RESULT ================= */
+
+        .selected-location {
+            margin-top: 18px;
+
+            padding: 12px 15px;
+
+            background: #f0edff;
+
+            border-radius: 9px;
+
+            color: #5037d5;
+
+            font-size: 13px;
+
+            display: none;
+        }
+
+
+
+        /* ================= SEARCH ================= */
+
+        .course-search {
+            margin-top: 20px;
+
+            height: 48px;
+
+            background: white;
+
+            border: 1px solid #8f79ff;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 15px;
+
+            gap: 10px;
+        }
+
+
+        .course-search input {
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            margin: 15px 0 20px;
+        }
+
+
+        .category {
+            padding: 9px 14px;
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            color: #333;
+        }
+
+
+        .category:hover {
+            border-color: #5b3fe4;
+        }
+
+
+        .category.active {
+            background: #5b3fe4;
+
+            border-color: #5b3fe4;
+
+            color: white;
+        }
+
+
+
+        /* ================= COURSE GRID ================= */
+
+        .course-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .course-card {
+            background: white;
+
+            border: 1px solid #e5e5ef;
+
+            border-radius: 13px;
+
+            padding: 18px;
+
+            transition: 0.25s;
+        }
+
+
+        .course-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.08);
+        }
+
+
+        .course-icon {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            font-size: 20px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .blue {
+            background: #1685e8;
+        }
+
+        .green {
+            background: #2db276;
+        }
+
+        .pink {
+            background: #ed4d8d;
+        }
+
+        .orange {
+            background: #ff7b2b;
+        }
+
+        .purple {
+            background: #7853df;
+        }
+
+        .teal {
+            background: #159fae;
+        }
+
+        .yellow {
+            background: #f8b429;
+        }
+
+        .cyan {
+            background: #35a9bd;
+        }
+
+
+        .course-card h3 {
+            font-size: 15px;
+
+            color: #22223f;
+
+            margin-bottom: 5px;
+        }
+
+
+        .course-count {
+            color: #777;
+
+            font-size: 11px;
+        }
+
+
+        .course-card p {
+            color: #666;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            margin: 12px 0;
+
+            min-height: 38px;
+        }
+
+
+        .explore-btn {
+            border: none;
+
+            background: transparent;
+
+            color: #4e36d8;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            font-size: 12px;
+        }
+
+
+        .explore-btn:hover {
+            text-decoration: underline;
+        }
+
+
+
+        /* ================= NO RESULT ================= */
+
+        .no-result {
+            display: none;
+
+            text-align: center;
+
+            padding: 40px;
+
+            color: #777;
+        }
+
+
+
+        /* ================= RIGHT SIDEBAR ================= */
+
+        .right-sidebar {
+            padding: 20px 15px;
+        }
+
+
+        .popular-box {
+            background: white;
+
+            border: 1px solid #e5e5ef;
+
+            border-radius: 13px;
+
+            padding: 18px;
+        }
+
+
+        .popular-box h2 {
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .popular-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+
+        .popular-item:last-child {
+            border-bottom: none;
+        }
+
+
+        .popular-icon {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 8px;
+
+            background: #f2efff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .popular-item b {
+            display: block;
+
+            font-size: 12px;
+        }
+
+
+        .popular-item small {
+            color: #777;
+
+            font-size: 10px;
+        }
+
+
+        .view-all {
+            border: none;
+
+            background: none;
+
+            color: #4e36d8;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            display: block;
+
+            margin: 15px auto 0;
+        }
+
+
+
+        /* ================= AI BOX ================= */
+
+        .ai-box {
+            margin-top: 15px;
+
+            padding: 20px;
+
+            background: #eeeaff;
+
+            border-radius: 13px;
+
+            position: relative;
+        }
+
+
+        .ai-box h2 {
+            color: #5037d5;
+
+            font-size: 18px;
+
+            line-height: 1.3;
+        }
+
+
+        .ai-box p {
+            color: #555;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            margin-top: 10px;
+        }
+
+
+        .robot {
+            text-align: right;
+
+            font-size: 48px;
+
+            margin: 5px 0;
+        }
+
+
+        .ai-btn {
+            background: #5b3fe4;
+
+            border: none;
+
+            color: white;
+
+            padding: 10px 13px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+
+        /* ================= BACK BUTTON ================= */
+
+        .back-button {
+            display: inline-block;
+
+            margin-bottom: 15px;
+
+            text-decoration: none;
+
+            color: #5037d5;
+
+            font-size: 13px;
+        }
+
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 1100px) {
+
+            .layout {
+                grid-template-columns:
+                    190px 1fr;
+            }
+
+            .right-sidebar {
+                display: none;
+            }
+
+        }
+
+
+        @media(max-width: 800px) {
+
+            .header {
+                padding: 0 15px;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .header-search {
+                width: 60%;
+            }
+
+            .layout {
+                display: block;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media(max-width: 500px) {
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-search {
+                width: 75%;
+            }
+
+            .profile {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        <div>
+            <h2>EduPath AI</h2>
+
+            <p>
+                Your Career, Our Guidance
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="header-search">
+
+        🔍
+
+        <input
+            type="text"
+            id="headerSearch"
+            placeholder="Search courses, degrees, fields..."
+            onkeyup="headerSearchCourses()"
+        >
+
+        <button onclick="headerSearchCourses()">
+            🔍
+        </button>
+
+    </div>
+
+
+    <div class="profile">
+
+        🔔
+
+        <div class="profile-icon">
+            SK
+        </div>
+
+        <div>
+            <b>Sathya K</b>
+            <small>Student</small>
+        </div>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- ================= PAGE LAYOUT ================= -->
+
+<div class="layout">
+
+
+
+<!-- ================= LEFT SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+
+    <div class="sidebar-title">
+        🎓 EduPath AI
+    </div>
+
+
+    <a href="dashboard.html">
+        🏠 Dashboard
+    </a>
+
+
+    <a href="what-to-study.html"
+       class="active">
+        📚 What to Study
+    </a>
+
+
+    <a href="videos.html">
+        🎥 Career Videos
+    </a>
+
+
+    <a href="jobs.html">
+        💼 Job & Salary
+    </a>
+
+
+    <a href="higher-studies.html">
+        🎓 Higher Studies
+    </a>
+
+
+    <a href="colleges.html">
+        🏫 College Suggestions
+    </a>
+
+
+    <a href="scholarships.html">
+        🎁 Scholarships
+    </a>
+
+
+    <a href="eligibility.html">
+        ✅ Eligibility Checker
+    </a>
+
+
+    <a href="exams.html">
+        📝 Entrance Exams
+    </a>
+
+
+    <a href="important-dates.html">
+        📅 Important Dates
+    </a>
+
+
+    <a href="saved.html">
+        ❤️ Saved
+    </a>
+
+
+    <a href="ai-assistant.html">
+        🤖 AI Assistant
+    </a>
+
+
+    <a href="profile.html">
+        👤 Profile
+    </a>
+
+
+    <a href="login.html"
+       class="logout">
+        🚪 Logout
+    </a>
+
+
+</aside>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+    <a href="dashboard.html"
+       class="back-button">
+        ← Back to Dashboard
+    </a>
+
+
+    <div class="title">
+
+        <h1>
+            What to Study
+        </h1>
+
+        <p>
+            Explore 1000+ courses from around the world
+            and build your future
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= LOCATION ================= -->
+
+    <section class="location-box">
+
+        <h2>
+            🌍 Find Courses Near You
+        </h2>
+
+        <p>
+            Select your country, state and district/city
+            to discover courses.
+        </p>
+
+
+        <div class="location-grid">
+
+
+            <!-- COUNTRY -->
+
+            <div class="select-group">
+
+                <label>
+                    🌍 Country
+                </label>
+
+                <select
+                    id="country"
+                    onchange="loadStates()">
+
+                    <option value="">
+                        Select Country
+                    </option>
+
+                    <option value="india">
+                        🇮🇳 India
+                    </option>
+
+                    <option value="usa">
+                        🇺🇸 United States
+                    </option>
+
+                    <option value="uk">
+                        🇬🇧 United Kingdom
+                    </option>
+
+                    <option value="canada">
+                        🇨🇦 Canada
+                    </option>
+
+                    <option value="australia">
+                        🇦🇺 Australia
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- STATE -->
+
+            <div class="select-group">
+
+                <label>
+                    📍 State / Province
+                </label>
+
+                <select
+                    id="state"
+                    onchange="loadDistricts()"
+                    disabled>
+
+                    <option value="">
+                        Select State
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- DISTRICT -->
+
+            <div class="select-group">
+
+                <label>
+                    📍 District / City
+                </label>
+
+                <select
+                    id="district"
+                    onchange="showLocationCourses()"
+                    disabled>
+
+                    <option value="">
+                        Select District / City
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            id="selectedLocation"
+            class="selected-location">
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= COURSE SEARCH ================= -->
+
+    <div class="course-search">
+
+        🔍
+
+        <input
+            type="text"
+            id="courseSearch"
+            placeholder="Search any course, degree, field..."
+            onkeyup="searchCourses()"
+        >
+
+    </div>
+
+
+
+    <!-- ================= CATEGORY ================= -->
+
+    <div class="categories">
+
+
+        <button
+            class="category active"
+            onclick="filterCategory('all', this)">
+            All
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterCategory('engineering', this)">
+            ⚙️ Engineering
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterCategory('medical', this)">
+            ❤️ Medical
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterCategory('it', this)">
+            💻 IT & Computer
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterCategory('business', this)">
+            💼 Business
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterCategory('science', this)">
+            🧪 Science
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterCategory('law', this)">
+            ⚖️ Law
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterCategory('arts', this)">
+            🎨 Arts
+        </button>
+
+
+    </div>
+
+
+
+    <!-- ================= COURSES ================= -->
+
+    <div
+        class="course-grid"
+        id="courseGrid">
+
+
+
+        <!-- COMPUTER SCIENCE -->
+
+        <div
+            class="course-card"
+            data-category="it"
+            data-name="computer science computer engineering information technology software engineering">
+
+            <div class="course-icon blue">
+                💻
+            </div>
+
+            <h3>
+                Computer Science & IT
+            </h3>
+
+            <span class="course-count">
+                120+ Courses
+            </span>
+
+            <p>
+                Software, AI, Data Science,
+                Cybersecurity and more.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Computer Science & IT')">
+                Explore →
+            </button>
+
+        </div>
+
+
+
+        <!-- ENGINEERING -->
+
+        <div
+            class="course-card"
+            data-category="engineering"
+            data-name="engineering mechanical civil electrical electronics aerospace chemical">
+
+            <div class="course-icon green">
+                ⚙️
+            </div>
+
+            <h3>
+                Engineering
+            </h3>
+
+            <span class="course-count">
+                150+ Courses
+            </span>
+
+            <p>
+                Mechanical, Civil, Electrical,
+                Electronics and more.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Engineering')">
+                Explore →
+            </button>
+
+        </div>
+
+
+
+        <!-- MEDICAL -->
+
+        <div
+            class="course-card"
+            data-category="medical"
+            data-name="medical mbbs nursing pharmacy healthcare biotechnology medicine">
+
+            <div class="course-icon pink">
+                ❤️
+            </div>
+
+            <h3>
+                Medical & Healthcare
+            </h3>
+
+            <span class="course-count">
+                80+ Courses
+            </span>
+
+            <p>
+                MBBS, Nursing, Pharmacy,
+                Biotechnology and more.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Medical & Healthcare')">
+                Explore →
+            </button>
+
+        </div>
+
+
+
+        <!-- BUSINESS -->
+
+        <div
+            class="course-card"
+            data-category="business"
+            data-name="business management mba bba finance marketing hr accounting">
+
+            <div class="course-icon orange">
+                💼
+            </div>
+
+            <h3>
+                Business & Management
+            </h3>
+
+            <span class="course-count">
+                100+ Courses
+            </span>
+
+            <p>
+                MBA, BBA, Finance, Marketing,
+                HR and more.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Business & Management')">
+                Explore →
+            </button>
+
+        </div>
+
+
+
+        <!-- SCIENCE -->
+
+        <div
+            class="course-card"
+            data-category="science"
+            data-name="science physics chemistry biology mathematics astronomy">
+
+            <div class="course-icon purple">
+                🧪
+            </div>
+
+            <h3>
+                Science
+            </h3>
+
+            <span class="course-count">
+                90+ Courses
+            </span>
+
+            <p>
+                Physics, Chemistry, Biology,
+                Mathematics and more.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Science')">
+                Explore →
+            </button>
+
+        </div>
+
+
+
+        <!-- LAW -->
+
+        <div
+            class="course-card"
+            data-category="law"
+            data-name="law legal llb criminal corporate international law">
+
+            <div class="course-icon teal">
+                ⚖️
+            </div>
+
+            <h3>
+                Law & Legal Studies
+            </h3>
+
+            <span class="course-count">
+                60+ Courses
+            </span>
+
+            <p>
+                LLB, Criminal Law, Corporate
+                Law and more.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Law & Legal Studies')">
+                Explore →
+            </button>
+
+        </div>
+
+
+
+        <!-- ARTS -->
+
+        <div
+            class="course-card"
+            data-category="arts"
+            data-name="arts design graphic interior fine arts animation">
+
+            <div class="course-icon pink">
+                🎨
+            </div>
+
+            <h3>
+                Arts & Design
+            </h3>
+
+            <span class="course-count">
+                70+ Courses
+            </span>
+
+            <p>
+                Fine Arts, Graphic Design,
+                Interior Design and more.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Arts & Design')">
+                Explore →
+            </button>
+
+        </div>
+
+
+
+        <!-- EDUCATION -->
+
+        <div
+            class="course-card"
+            data-category="education"
+            data-name="education bed med teaching special education">
+
+            <div class="course-icon yellow">
+                📚
+            </div>
+
+            <h3>
+                Education
+            </h3>
+
+            <span class="course-count">
+                50+ Courses
+            </span>
+
+            <p>
+                B.Ed, M.Ed, Teaching,
+                Special Education and more.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Education')">
+                Explore →
+            </button>
+
+        </div>
+
+
+
+        <!-- AGRICULTURE -->
+
+        <div
+            class="course-card"
+            data-category="agriculture"
+            data-name="agriculture horticulture forestry farming">
+
+            <div class="course-icon cyan">
+                🌱
+            </div>
+
+            <h3>
+                Agriculture
+            </h3>
+
+            <span class="course-count">
+                40+ Courses
+            </span>
+
+            <p>
+                Agriculture, Horticulture,
+                Forestry and Farming.
+            </p>
+
+            <button
+                class="explore-btn"
+                onclick="openCourse('Agriculture')">
+                Explore →
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div
+        id="noResult"
+        class="no-result">
+
+        😔
+
+        <h3>
+            No courses found
+        </h3>
+
+        <p>
+            Try another course or category.
+        </p>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ================= RIGHT SIDEBAR ================= -->
+
+<aside class="right-sidebar">
+
+
+    <div class="popular-box">
+
+        <h2>
+            ⭐ Popular Courses
+        </h2>
+
+
+        <div class="popular-item">
+
+            <div class="popular-icon">
+                🤖
+            </div>
+
+            <div>
+                <b>Artificial Intelligence</b>
+                <small>High Demand</small>
+            </div>
+
+        </div>
+
+
+        <div class="popular-item">
+
+            <div class="popular-icon">
+                📊
+            </div>
+
+            <div>
+                <b>Data Science</b>
+                <small>High Demand</small>
+            </div>
+
+        </div>
+
+
+        <div class="popular-item">
+
+            <div class="popular-icon">
+                🔐
+            </div>
+
+            <div>
+                <b>Cybersecurity</b>
+                <small>High Demand</small>
+            </div>
+
+        </div>
+
+
+        <div class="popular-item">
+
+            <div class="popular-icon">
+                📈
+            </div>
+
+            <div>
+                <b>Digital Marketing</b>
+                <small>High Demand</small>
+            </div>
+
+        </div>
+
+
+        <div class="popular-item">
+
+            <div class="popular-icon">
+                🧠
+            </div>
+
+            <div>
+                <b>Psychology</b>
+                <small>Evergreen</small>
+            </div>
+
+        </div>
+
+
+        <button
+            class="view-all"
+            onclick="showAllCourses()">
+
+            View All →
+
+        </button>
+
+    </div>
+
+
+
+    <!-- AI -->
+
+    <div class="ai-box">
+
+        <h2>
+            Not sure<br>
+            what to choose?
+        </h2>
+
+        <p>
+            Get AI-powered career
+            recommendations based
+            on your interests.
+        </p>
+
+
+        <div class="robot">
+            🤖
+        </div>
+
+
+        <button
+            class="ai-btn"
+            onclick="goToAI()">
+
+            Try AI Career Assistant
+
+        </button>
+
+    </div>
+
+
+</aside>
+
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =================================================
+   LOCATION DATABASE
+================================================= */
+
+const locationData = {
+
+    india: {
+
+        "Tamil Nadu": [
+
+            "Chennai",
+            "Tirupathur",
+            "Vellore",
+            "Coimbatore",
+            "Madurai",
+            "Salem",
+            "Tiruchirappalli",
+            "Tirunelveli",
+            "Erode",
+            "Thanjavur",
+            "Kanchipuram",
+            "Tiruppur",
+            "Dindigul",
+            "Thoothukudi"
+
+        ],
+
+
+        "Karnataka": [
+
+            "Bangalore",
+            "Mysore",
+            "Mangalore",
+            "Hubli",
+            "Belgaum"
+
+        ],
+
+
+        "Kerala": [
+
+            "Kochi",
+            "Thiruvananthapuram",
+            "Kozhikode",
+            "Thrissur"
+
+        ],
+
+
+        "Andhra Pradesh": [
+
+            "Vijayawada",
+            "Visakhapatnam",
+            "Tirupati",
+            "Guntur"
+
+        ],
+
+
+        "Telangana": [
+
+            "Hyderabad",
+            "Warangal",
+            "Nizamabad"
+
+        ],
+
+
+        "Maharashtra": [
+
+            "Mumbai",
+            "Pune",
+            "Nagpur",
+            "Nashik"
+
+        ],
+
+
+        "Delhi": [
+
+            "New Delhi",
+            "Central Delhi",
+            "South Delhi"
+
+        ]
+
+    },
+
+
+    usa: {
+
+        "California": [
+
+            "Los Angeles",
+            "San Francisco",
+            "San Diego",
+            "San Jose"
+
+        ],
+
+
+        "Texas": [
+
+            "Houston",
+            "Dallas",
+            "Austin",
+            "San Antonio"
+
+        ],
+
+
+        "New York": [
+
+            "New York City",
+            "Buffalo",
+            "Albany"
+
+        ]
+
+    },
+
+
+    uk: {
+
+        "England": [
+
+            "London",
+            "Manchester",
+            "Birmingham",
+            "Liverpool"
+
+        ],
+
+
+        "Scotland": [
+
+            "Edinburgh",
+            "Glasgow"
+
+        ]
+
+    },
+
+
+    canada: {
+
+        "Ontario": [
+
+            "Toronto",
+            "Ottawa",
+            "Hamilton"
+
+        ],
+
+
+        "British Columbia": [
+
+            "Vancouver",
+            "Victoria"
+
+        ]
+
+    },
+
+
+    australia: {
+
+        "New South Wales": [
+
+            "Sydney",
+            "Newcastle"
+
+        ],
+
+
+        "Victoria": [
+
+            "Melbourne",
+            "Geelong"
+
+        ]
+
+    }
+
+};
+
+
+
+/* =================================================
+   LOAD STATES
+================================================= */
+
+function loadStates() {
+
+
+    const country =
+        document.getElementById("country").value;
+
+
+    const state =
+        document.getElementById("state");
+
+
+    const district =
+        document.getElementById("district");
+
+
+    state.innerHTML =
+        '<option value="">Select State</option>';
+
+
+    district.innerHTML =
+        '<option value="">Select District / City</option>';
+
+
+    district.disabled = true;
+
+
+    document.getElementById(
+        "selectedLocation"
+    ).style.display = "none";
+
+
+    if (!country) {
+
+        state.disabled = true;
+
+        return;
+
+    }
+
+
+    state.disabled = false;
+
+
+    const states =
+        locationData[country];
+
+
+    Object.keys(states).forEach(
+        function(stateName) {
+
+
+            const option =
+                document.createElement("option");
+
+
+            option.value =
+                stateName;
+
+
+            option.textContent =
+                stateName;
+
+
+            state.appendChild(option);
+
+        }
+    );
+
+}
+
+
+
+/* =================================================
+   LOAD DISTRICTS
+================================================= */
+
+function loadDistricts() {
+
+
+    const country =
+        document.getElementById("country").value;
+
+
+    const state =
+        document.getElementById("state").value;
+
+
+    const district =
+        document.getElementById("district");
+
+
+    district.innerHTML =
+        '<option value="">Select District / City</option>';
+
+
+    if (!state) {
+
+        district.disabled = true;
+
+        return;
+
+    }
+
+
+    district.disabled = false;
+
+
+    const districts =
+        locationData[country][state];
+
+
+    districts.forEach(
+        function(districtName) {
+
+
+            const option =
+                document.createElement("option");
+
+
+            option.value =
+                districtName;
+
+
+            option.textContent =
+                districtName;
+
+
+            district.appendChild(option);
+
+        }
+    );
+
+}
+
+
+
+/* =================================================
+   SHOW LOCATION
+================================================= */
+
+function showLocationCourses() {
+
+
+    const countrySelect =
+        document.getElementById("country");
+
+
+    const stateSelect =
+        document.getElementById("state");
+
+
+    const districtSelect =
+        document.getElementById("district");
+
+
+    const country =
+        countrySelect.options[
+            countrySelect.selectedIndex
+        ].text;
+
+
+    const state =
+        stateSelect.value;
+
+
+    const district =
+        districtSelect.value;
+
+
+    if (!district) {
+
+        return;
+
+    }
+
+
+    const location =
+        document.getElementById(
+            "selectedLocation"
+        );
+
+
+    location.innerHTML =
+
+        "📍 Showing courses for " +
+        "<b>" +
+        district +
+        "</b>, " +
+        state +
+        ", " +
+        country;
+
+
+    location.style.display =
+        "block";
+
+
+    /*
+       Save selected location
+    */
+
+    localStorage.setItem(
+        "selectedCountry",
+        country
+    );
+
+
+    localStorage.setItem(
+        "selectedState",
+        state
+    );
+
+
+    localStorage.setItem(
+        "selectedDistrict",
+        district
+    );
+
+
+}
+
+
+
+/* =================================================
+   COURSE SEARCH
+================================================= */
+
+function searchCourses() {
+
+
+    const search =
+        document.getElementById(
+            "courseSearch"
+        ).value.toLowerCase().trim();
+
+
+    const cards =
+        document.querySelectorAll(
+            ".course-card"
+        );
+
+
+    let found = 0;
+
+
+    cards.forEach(
+        function(card) {
+
+
+            const name =
+                card.dataset.name;
+
+
+            if (
+                name.includes(search)
+                ||
+                search === ""
+            ) {
+
+                card.style.display =
+                    "block";
+
+                found++;
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "noResult"
+    ).style.display =
+        found === 0 ? "block" : "none";
+
+}
+
+
+
+/* =================================================
+   HEADER SEARCH
+================================================= */
+
+function headerSearchCourses() {
+
+
+    const value =
+        document.getElementById(
+            "headerSearch"
+        ).value;
+
+
+    document.getElementById(
+        "courseSearch"
+    ).value = value;
+
+
+    searchCourses();
+
+
+    document.getElementById(
+        "courseSearch"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+
+/* =================================================
+   CATEGORY FILTER
+================================================= */
+
+function filterCategory(
+    category,
+    button
+) {
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".category"
+        );
+
+
+    buttons.forEach(
+        function(btn) {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    const cards =
+        document.querySelectorAll(
+            ".course-card"
+        );
+
+
+    let found = 0;
+
+
+    cards.forEach(
+        function(card) {
+
+
+            if (
+                category === "all"
+                ||
+                card.dataset.category === category
+            ) {
+
+                card.style.display =
+                    "block";
+
+                found++;
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "courseSearch"
+    ).value = "";
+
+
+    document.getElementById(
+        "noResult"
+    ).style.display =
+        found === 0 ? "block" : "none";
+
+}
+
+
+
+/* =================================================
+   OPEN COURSE
+================================================= */
+
+function openCourse(courseName) {
+
+
+    localStorage.setItem(
+        "selectedCourse",
+        courseName
+    );
+
+
+    /*
+       If course-details.html exists,
+       open that page.
+    */
+
+    window.location.href =
+        "course-details.html";
+
+}
+
+
+
+/* =================================================
+   AI ASSISTANT
+================================================= */
+
+function goToAI() {
+
+    window.location.href =
+        "ai-assistant.html";
+
+}
+
+
+
+/* =================================================
+   VIEW ALL
+================================================= */
+
+function showAllCourses() {
+
+
+    const allButton =
+        document.querySelector(
+            ".category"
+        );
+
+
+    filterCategory(
+        "all",
+        allButton
+    );
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* =================================================
+   LOAD SAVED LOCATION
+================================================= */
+
+window.onload = function() {
+
+
+    const savedCountry =
+        localStorage.getItem(
+            "selectedCountry"
+        );
+
+
+    const savedState =
+        localStorage.getItem(
+            "selectedState"
+        );
+
+
+    const savedDistrict =
+        localStorage.getItem(
+            "selectedDistrict"
+        );
+
+
+    if (
+        savedCountry &&
+        savedState &&
+        savedDistrict
+    ) {
+
+        /*
+           Display saved location
+        */
+
+        const location =
+            document.getElementById(
+                "selectedLocation"
+            );
+
+
+        location.innerHTML =
+
+            "📍 Last selected location: " +
+            "<b>" +
+            savedDistrict +
+            "</b>, " +
+            savedState +
+            ", " +
+            savedCountry;
+
+
+        location.style.display =
+            "block";
+
+    }
+
+};
+
+
+</script>
+
+
+</body>
+
+</html>
